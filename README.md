@@ -20,9 +20,11 @@
 yarn create next-app --typescript
 ```
 
-## 
+## DEPENDANCIES
 
 
 # NOTES
 
 [NOTES](/__NOTES/)
+
+# 
