@@ -20,11 +20,10 @@
 yarn create next-app --typescript
 ```
 
-## DEPENDANCIES
+## DEPENDANCIES (ADD HERE WHEN YOU THINK OF SOME)
 
+`yarn add next-connect cors morgan pg`
 
 # NOTES
 
-[NOTES](/__NOTES/)
-
-# 
+[NOTES](/__NOTES/) 
