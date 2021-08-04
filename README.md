@@ -12,12 +12,17 @@
 
 ...
 
+# INITIAL SETUP
+
 ## BOOTSTRAPED WITH:
 
 ```
 yarn create next-app --typescript
 ```
 
-## NOTES
+## 
+
+
+# NOTES
 
 [NOTES](/__NOTES/)
