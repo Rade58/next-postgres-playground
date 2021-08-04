@@ -20,4 +20,4 @@ yarn create next-app --typescript
 
 ## NOTES
 
-[NOTES](__NOTES/)
+[NOTES](/__NOTES/)
