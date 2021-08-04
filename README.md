@@ -1,4 +1,4 @@
-# API DESIGN WITH `next-connect`
+# API DESIGN WITH `next-connect` PLUS AUTHENTICATION WITH JWT IN PERN STCK
 
 ## MAJOR TECHNOOGIES USED IN THIS PROJECT:
 
@@ -22,8 +22,8 @@ yarn create next-app --typescript
 
 ## DEPENDANCIES (ADD HERE WHEN YOU THINK OF SOME)
 
-`yarn add next-connect cors morgan pg`
+`yarn add next-connect cors morgan pg nanoid`
 
-# NOTES
+# NOTES (INCLUDING DTABASE SETUP WITH DOCKER)
 
 [NOTES](/__NOTES/) 
