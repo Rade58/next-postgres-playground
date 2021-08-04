@@ -1,0 +1,1 @@
+CREATE DATABASE db_of_love; 
