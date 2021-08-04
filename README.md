@@ -10,7 +10,7 @@
 
 - PostgreSQL
 
-AND THE REST...
+...
 
 ## BOOTSTRAPED WITH:
 
