@@ -1,0 +1,3 @@
+# SOME HELPFUL STUFF
+
+- `\d <table name>` (FIND OUT WHAT FIELDS (ROWS) YOU CAN QUERY) 
