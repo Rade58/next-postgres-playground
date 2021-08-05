@@ -8,19 +8,6 @@ AUTHENTICATION WITH JWT:
 
 <https://github.com/ousecTic/pern-jwt-tutorial>
 
-
-***
-***
-***
-***
-***
-***
-
-
-# na kraju sam ipak odlucio da ne radim sve ispocetka i da opet prepisujem i radim sve isto sa prostgresom, sto sam radio sa mongom
-
-TAKO DA OVO DOLE MOZES DA IGNORISES
-
 # API DESIGN WITH `next-connect` PLUS AUTHENTICATION WITH JWT IN PERN STCK
 
 ## MAJOR TECHNOOGIES USED IN THIS PROJECT:
@@ -49,5 +36,9 @@ yarn create next-app --typescript
 
 # NOTES (INCLUDING DTABASE SETUP WITH DOCKER)
 
-[NOTES](/__NOTES/)
+[SOME NOTES](/__NOTES/)
+
+**NOTES SE ODNOSE NA SPINNING UP CONTAINER SA POSTGRES INSTANCOM**
+
+**KAO I NA KONEKTOVANJE NA DATABASE FROM NODEJS WORLD**
 
