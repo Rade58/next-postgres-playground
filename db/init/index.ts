@@ -2,7 +2,7 @@ import {Pool} from 'pg'
 
 // THIS SHOULD BE ENV VARIABLES
 const user = "rade";
-const pass = "schism";
+const pass = "eidolon";
 const dbName = "db_of_love";
 // 
 

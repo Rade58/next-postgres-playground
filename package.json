@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/morgan": "^1.9.3",
     "@types/pg": "^8.6.1",
     "cors": "^2.8.5",
     "morgan": "^1.10.0",

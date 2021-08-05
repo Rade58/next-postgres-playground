@@ -1,61 +1,53 @@
-# WHAT I'M GOING TO DO
+# CONNECTING TO THE DATBASE FROM NODEJS WORLD
 
-- EXPLORE AND PRACTICE SQL
+- `touch db/init/index.ts`
 
-- SPINNING UP DOCKER CONTAINER WITH A POSTGRES DATBASE
+```ts
+import {Pool} from 'pg'
 
-- INTERACTING DIRECTLY WITH A DATABASE (SHELL)
+// THIS SHOULD BE ENV VARIABLES
+const user = "rade";
+const pass = "eidolon";
+const dbName = "db_of_love";
+// 
 
-- CONNECTING DATBASE TO THE NODEJS WORLD (pg) PACKAGE
 
-- PLAYING AROUND WITH CRUD
+const pool = new Pool({
+  connectionString: `postgresql://${user}:${pass}@localhost:5432/${dbName}`
+})
 
-- SPINNING UP POSTGRES INSTANCE WITH A SUPABASE
-
-- LEARNING MORE ABOUT SUPABASE
-
-# API DESIGN WITH `next-connect` PLUS AUTHENTICATION WITH JWT IN PERN STCK
-
-## MAJOR TECHNOOGIES USED IN THIS "TRYOUT":
-
-- Typescript
-
-- Next.js
-
-- next-connect
-
-- PostgreSQL
-
-- SUPABASE
-
-...
-
-# INITIAL SETUP
-
-## BOOTSTRAPED WITH:
-
-```
-yarn create next-app --typescript
+export const makeDbClient = async () => pool.connect(); 
 ```
 
-## DEPENDANCIES (ADD HERE WHEN YOU THINK OF SOME)
+## TEST HANDLER
 
-`yarn add next-connect cors morgan pg nanoid`
+- `touch pages/api/test.ts`
 
-# NOTES (INCLUDING DTABASE SETUP WITH DOCKER)
+```ts
+import nc from 'next-connect'
+import type {NextApiRequest, NextApiResponse} from 'next';
+import morgan from 'morgan'
 
-[SOME NOTES](/__NOTES/)
+import {makeDbClient} from '../../db/init'
 
-**NOTES ARE MANLY FOR EXPLAINING HOW TO SPIN UP CONTAINER WITH A POSTGRES INSTANCE AND SOME OTHER STUFF, LIKE CONNECTING TO A DATABASE INSIDE CLUSTER**
+const handler = nc<NextApiRequest, NextApiResponse>();
 
-# USEFULL POSTGRES LINKS:
+handler.use(morgan('combined'))
 
-<https://postgrescheatsheet.com/#/tables>
 
-# USEFUL SUPABASE TUTORIAL
+handler.get(async (req, res) => {
 
-<https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
+  const dbClient = await makeDbClient()
 
-# THE REST OF THE NOTES ARE IN README IN OTHER BRANCHES
+  const data = await dbClient.query("SELECT * FROM some_users;")
 
-BRANCHES ARE NUMERATED
+  res.status(200).json(data);
+
+})
+
+export default handler;
+```
+
+IT IS WORKING (TESTED WITJ HTTPIE)
+
+- `http GET :3000/api/test`
