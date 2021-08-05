@@ -56,4 +56,6 @@ yarn create next-app --typescript
 
 <https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
 
+# THE REST OF THE NOTES ARE IN README IN OTHER BRANCHES
 
+BRANCHES ARE NUMERATED
