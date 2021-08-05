@@ -51,3 +51,9 @@ yarn create next-app --typescript
 # USEFULL POSTGRES LINKS:
 
 <https://postgrescheatsheet.com/#/tables>
+
+# USEFUL SUPABASE TUTORIAL
+
+<https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
+
+
