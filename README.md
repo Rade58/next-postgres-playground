@@ -1,4 +1,6 @@
-# WHAT I'M GOING TO DO
+# REPO MADE ONLY FOR MY LEARNING AND MY PRACTICING PURPOSES
+
+IDEAS OR WHAT AM I GOING TO DO:
 
 - EXPLORE AND PRACTICE SQL
 
@@ -54,10 +56,7 @@ yarn create next-app --typescript
 
 <https://postgrescheatsheet.com/#/tables>
 
-# USEFUL SUPABASE TUTORIAL I'M GOING TO FOLLOW (STARTING WITH BRANCH 1_)
+# USEFUL SUPABASE TUTORIAL I'M GOING TO FOLLOW
 
 <https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
 
-# THE REST OF THE NOTES ARE IN README IN OTHER BRANCHES
-
-BRANCHES ARE NUMERATED LIKE I MENTIONED
