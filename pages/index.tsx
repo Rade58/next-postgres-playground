@@ -7,7 +7,7 @@ import type { FC} from 'react'
 const IndexPage:FC = () => {
 
   return (
-    <div>Hello World</div>
+    <div className="bg-gray-600 text-gray-100">Hello World</div>
   )
 
 }
