@@ -39,8 +39,8 @@ handler.get(async (req, res) => {
 
   const dbClient = await makeDbClient()
 
-  const data = await dbClient.query("SELECT * FROM some_users;")
-
+  const data = await dbClient.query("SELECT * FROM users LIMIT 10;")
+  console.log({data})
   res.status(200).json(data);
 
 })
