@@ -15,14 +15,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // CHECKING FOR USER WHEN SOMETHING CHANGES WITH AUTH
     const { data: authListener } = supabase.auth.onAuthStateChange(async (e) =>
-      checkUser()
+      checkUser() // IT'S GOING TO BE CALLED 
+                  // EVERY TIME SOMETHING CHANGES ABOUT AUTH
     );
 
     // CHECKING USER ON MOUNTING
     checkUser();
 
     return () => {
-      // NO NEED TO CHECK FOR USER WHEN COMMPONENT UNMOUNTS
+      // NO NEED TO REMOVE LISTENER ON UNMOUNTING
+      // AS A CLENUP
       authListener?.unsubscribe();
     };
   }, []);
