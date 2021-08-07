@@ -37,6 +37,7 @@ const CreatePostPg: FunctionComponent = () => {
   const { push } = useRouter();
 
   // ------ ON CHANGE EVENT HANDLER --------
+  // AT THE END IT IS ONLY GOING TO BE USED FOR TAKING title
   function onChange(e: ChangeEvent<{ name: string; value: string }>) {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
@@ -66,6 +67,7 @@ const CreatePostPg: FunctionComponent = () => {
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
       </h1>
+      {/* THIS INPUT IS FOR title */}
       <input
         onChange={onChange}
         name="title"
@@ -73,6 +75,8 @@ const CreatePostPg: FunctionComponent = () => {
         value={post.title}
         className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
       />
+      {/* THIS COMPONENT IS MARKDOWN EDITOR
+       IT IS FOR content */}
       <SimpleMDE
         value={post.content}
         onChange={(val) => setPost({ ...post, content: val })}
