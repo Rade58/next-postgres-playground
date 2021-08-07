@@ -19,3 +19,5 @@ CREATE POLICY 'Individuals can create posts.' ON posts FOR INSERT WITH CHECK (au
 CREATE POLICY 'Individuals can update their own posts.' ON posts FOR UPDATE USING (auth.uid() = user_id);
 
 CREATE POLICY 'Individuals can delete their own posts.' ON posts FOR DELETE USING (auth.uid() = user_id);
+
+CREATE POLICY 'Post are public.' ON posts FOR SELECT USING (true);
