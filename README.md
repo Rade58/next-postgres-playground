@@ -1,5 +1,7 @@
 # SUPABASE (FROM THIS POINT I'M NOT TAKING ANY NOTES)
 
+**I WILL ONLY TAKE IMPORTANT NOTES**
+
 FOLLOWING THIS:
 
 <https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
