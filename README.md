@@ -49,6 +49,9 @@ const ProfilePage: FunctionComponent = () => {
     <div>
       <UserContextProvider supabaseClient={supabase}>
         <Profile supabaseClient={supabase}>
+          {/*THIS WILL RENDER "sign up" and "sign in" PARTS OF UI 
+          INTENDED FOR UNAUTHENTICATED USERS
+          ALSO ENABLING SIGN IN MAGIC LINK*/}
           <Auth supabaseClient={supabase} />
         </Profile>
       </UserContextProvider>
