@@ -37,7 +37,7 @@ const Profile: FunctionComponent<{
   // I RETURNED null HERE
   return null;
 
-  // TUTORIAL MAKER RETURNED CHILDREN AND I DON'T KNOW WHY
+  // TUTORIAL MAKER RETURNED children AND I DON'T KNOW WHY
   // TYPESCRIPT IS YELLING WHEN YOU DO THIS BECAUSE
   // THIS IS NOT FC ANYMORE IS YOU DO THAT
 
@@ -60,6 +60,5 @@ const ProfilePage: FunctionComponent = () => {
 };
 
 export default ProfilePage;
-
 ```
 
