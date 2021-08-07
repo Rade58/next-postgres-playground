@@ -1,10 +1,3 @@
-# CREATING POSTS (INSERTING INTO posts TABLE IN OUR POSTGRES INSTANCE ON SUPABASE)
-
-```
-touch pages/create-post.tsx
-```
-
-```tsx
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import type { ChangeEvent, FunctionComponent } from "react";
@@ -96,4 +89,3 @@ const CreatePostPg: FunctionComponent = () => {
 };
 
 export default CreatePostPg;
-```
