@@ -36,6 +36,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Link href="/">
           <a className="mr-6 cursor-pointer">Home</a>
         </Link>
+        {/* IF THERE IS A USER SHOW LINK TO PAGE FOR POST CREAATION */}
+        {user && (
+          <Link href="/create-post">
+            <a className="mr-6 cursor-pointer">Create Post</a>
+          </Link>
+        )}
+        <Link href="/profile">
+          <a className="mr-6 cursor-pointer">Profile</a>
+        </Link>
       </nav>
 
       <div className="py-8 px-16">
