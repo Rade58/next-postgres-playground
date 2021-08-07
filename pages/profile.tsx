@@ -8,6 +8,7 @@ import { Auth, Typography, Button } from "@supabase/ui";
 import { supabase } from "../lib/supabase";
 
 const { Text } = Typography;
+const { UserContextProvider } = Auth;
 
 const Profile: FunctionComponent<{
   supabaseClient: SupabaseClient;
@@ -18,7 +19,9 @@ const Profile: FunctionComponent<{
     return (
       <>
         <Text>Signeed in: {user?.email}</Text>
-        <Button>Sign out</Button>
+        <Button block onClick={() => supabaseClient.auth.signOut()}>
+          Sign out
+        </Button>
       </>
     );
   }
@@ -34,7 +37,15 @@ const Profile: FunctionComponent<{
 };
 
 const ProfilePage: FunctionComponent = () => {
-  return <div></div>;
+  return (
+    <div>
+      <UserContextProvider supabaseClient={supabase}>
+        <Profile supabaseClient={supabase}>
+          <Auth supabaseClient={supabase} />
+        </Profile>
+      </UserContextProvider>
+    </div>
+  );
 };
 
 export default ProfilePage;
