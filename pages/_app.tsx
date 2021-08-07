@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       // NO NEED TO CHECK FOR USER WHEN COMMPONENT UNMOUNTS
       authListener?.unsubscribe()
     }
-  })
+  }, [])
 
   async function checkUser(){
     const user = supabase.auth.user()
