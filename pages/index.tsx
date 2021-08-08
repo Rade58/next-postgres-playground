@@ -32,7 +32,23 @@ const IndexPage: FC = () => {
 
   if (!posts.length) return <p className="text-2xl">No post.</p>;
 
-  return <div className="bg-gray-600 text-gray-100">Hello World</div>;
+  return (
+    <div>
+      <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">Posts</h1>
+      {posts.map(({ id, title, user_email }) => {
+        return (
+          <Link key={id} href={`/posts/${id}`}>
+            <a>
+              <div className="cursor-pointer border-b border-gray-300 mt-8 pb-4">
+                <h2 className="text-xl font-semibold">{title}</h2>
+                <p className="text-gray-500 mt-2">Author: {user_email}</p>
+              </div>
+            </a>
+          </Link>
+        );
+      })}
+    </div>
+  );
 };
 
 export default IndexPage;
