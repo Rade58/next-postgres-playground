@@ -178,3 +178,13 @@ const EditPostPage: FunctionComponent = () => {
 
 export default EditPostPage;
 ```
+
+### FOR THE END LETS ADD LINK FOR THE CURRENT USER LIST OF POSTS `/my-posts`
+
+```
+code pages/_app.tsx
+```
+
+```tsx
+
+```

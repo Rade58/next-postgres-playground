@@ -10,16 +10,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<null | User>(null);
 
   useEffect(() => {
-    // CHECKING FOR USER WHEN SOMETHING CHANGES WITH AUTH
     const { data: authListener } = supabase.auth.onAuthStateChange(async (e) =>
       checkUser()
     );
 
-    // CHECKING USER ON MOUNTING
     checkUser();
 
     return () => {
-      // NO NEED TO CHECK FOR USER WHEN COMMPONENT UNMOUNTS
       authListener?.unsubscribe();
     };
   }, []);
@@ -38,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Link href="/">
           <a className="mr-6 cursor-pointer">Home</a>
         </Link>
-        {/* IF THERE IS A USER SHOW LINK TO PAGE FOR POST CREAATION */}
+
         {user && (
           <Link href="/create-post">
             <a className="mr-6 cursor-pointer">Create Post</a>
@@ -46,6 +43,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         )}
         <Link href="/profile">
           <a className="mr-6 cursor-pointer">Profile</a>
+        </Link>
+        {/* ADDED THIS */}
+        <Link href="/my-posts">
+          <a className="mr-6 cursor-pointer">My Posts</a>
         </Link>
       </nav>
 
