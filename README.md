@@ -46,8 +46,14 @@ const Profile: FunctionComponent<{
 const ProfilePage: FunctionComponent = () => {
   return (
     <div>
+      {/* USER PROVIDER (I CAN USE THIS PROVIDER ON ANY 
+      PAGE OR COMPONENT WHERE I WANT TO PROVIDE USER (OR 
+      EVERYWHERE I WANT TO CHECK IF USER EXITS OR NOT))  */}
       <UserContextProvider supabaseClient={supabase}>
+        
         <Profile supabaseClient={supabase}>
+          {/* THIS WILL RENDER FORMS (UI PROVIDED BY SUPABASE
+          ) (ENDER THEM ONLY IF USER OESN'T EXIST) */}
           <Auth supabaseClient={supabase} />
         </Profile>
       </UserContextProvider>
