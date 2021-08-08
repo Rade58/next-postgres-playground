@@ -18,7 +18,20 @@ const IndexPage: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(); // WE STILL NEDD TO FETCH ALL POSTS ON MOUNTING
+    // BUT NOW EWE WILL SUBSCRIBE TO CHANGES INSIDE posts TABLE
+    const mySubscription = supabase
+      .from("posts")
+      // THIS PART IS BASICLY SAYING
+      // EXECUTE THIS CALLBACK IF ANYTHING (DELETE INSERT UPDATE) HAPPENS WITH POSTS
+      .on("*", () => fetchPosts())
+      .subscribe();
+
+    // CLEANING UP
+
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
   }, []);
 
   async function fetchPosts() {
