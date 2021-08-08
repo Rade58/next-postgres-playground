@@ -61,3 +61,11 @@ const IndexPage: FC = () => {
 export default IndexPage;
 
 ```
+
+**YOU CAN TEST NOW**
+
+MAKE A ACCOUNT
+
+CREATE A POST
+
+(EMAIL MAGIC LINK ALSO WORKS)

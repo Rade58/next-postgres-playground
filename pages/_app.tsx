@@ -30,6 +30,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     setUser(user);
   }
 
+  console.log({ user });
+
   return (
     <div>
       <nav className="p-6 border-b border-gray-300">
