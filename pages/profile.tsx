@@ -26,14 +26,13 @@ const Profile: FunctionComponent<{
     );
   }
 
-  // I RETURNED null HERE
-  return null;
-
   // TUTORIAL MAKER RETURNED CHILDREN AND I DON'T KNOW WHY
   // TYPESCRIPT IS YELLING WHEN YOU DO THIS BECAUSE
   // THIS IS NOT FC ANYMORE IS YOU DO THAT
 
-  // return children;
+  // BUT WE NEED THIS SO I DECIDED TO USE FRAGMENT LIKE THIS
+
+  return <>{children}</>;
 };
 
 const ProfilePage: FunctionComponent = () => {
