@@ -28,6 +28,10 @@ const IndexPage: FC = () => {
     setIsLoading(false);
   }
 
+  if (isLoading) return <p className="text-2xl">Loading ...</p>;
+
+  if (!posts.length) return <p className="text-2xl">No post.</p>;
+
   return <div className="bg-gray-600 text-gray-100">Hello World</div>;
 };
 
