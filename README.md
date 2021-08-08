@@ -3,7 +3,7 @@
 ## PAGE TO LIST SIGNNED INS USERS POSTS, WITH DELETE LOGIC FOR EVERY SINGLE POST, AND LINK TO THE PAGE FOR POST UPDATING SHOULD BE RENDERED
 
 ```
-touch pages/my-post.tsx
+touch pages/my-posts.tsx
 ```
 
 ```tsx
