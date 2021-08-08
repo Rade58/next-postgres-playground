@@ -87,6 +87,8 @@ export default MyPostsPage;
 mkdir pages/edit-post && touch "pages/edit-post/[id].tsx"
 ```
 
+AGAIN WE ARE RENDERING MARKDOWN EDITOR BUT THIS TIME, WE WILL ADD OLD CONTENT AS A value SO YOU CAN ALTER THINGS APPROPRIATELLY
+
 ```tsx
 
 ```
