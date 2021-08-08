@@ -48,4 +48,3 @@ const ProfilePage: FunctionComponent = () => {
 };
 
 export default ProfilePage;
-export default ProfilePage;
