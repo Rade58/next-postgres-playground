@@ -77,6 +77,12 @@ export default MyPostsPage;
 
 ## PAGE FOR EDITING POST
 
+**WE ARE USING DYNAMIC ROUTES HERE BUT WE ARE NOT USING gtStaticPaths OR getStaticProps**
+
+**WE ARE USING ROUTER (query PARAMETER FROM ROUTER) TO RENDER APPROPRIATE THINGS**
+
+**WE ARE USING id QUERY PARAM BECAUSE WE WILL NAME FILE `[id].tsx`**
+
 ```
 mkdir pages/edit-post && touch "pages/edit-post/[id].tsx"
 ```
