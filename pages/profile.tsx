@@ -10,6 +10,7 @@ import { supabase } from "../lib/supabase";
 const { Text } = Typography;
 const { UserContextProvider } = Auth;
 
+// @ts-ignore
 const Profile: FunctionComponent<{
   supabaseClient: SupabaseClient;
 }> = ({ supabaseClient, children }) => {
@@ -27,13 +28,13 @@ const Profile: FunctionComponent<{
   }
 
   // I RETURNED null HERE
-  return null;
+  // return null;
 
   // TUTORIAL MAKER RETURNED CHILDREN AND I DON'T KNOW WHY
   // TYPESCRIPT IS YELLING WHEN YOU DO THIS BECAUSE
   // THIS IS NOT FC ANYMORE IS YOU DO THAT
 
-  // return children;
+  return children;
 };
 
 const ProfilePage: FunctionComponent = () => {
