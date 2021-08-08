@@ -18,8 +18,6 @@ IDEAS OR WHAT AM I GOING TO DO:
 
 - BUILDING PROJECT WITH SUPABASE (BLOG APP (FRONTEND WILL USE TAILWIND))
 
-# API DESIGN WITH `next-connect` PLUS AUTHENTICATION WITH JWT IN PERN STCK
-
 ## MAJOR TECHNOOGIES USED IN THIS "TRYOUT":
 
 - Typescript
@@ -60,3 +58,6 @@ yarn create next-app --typescript
 
 <https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
 
+## MAYBE i'LL COVER:
+
+API DESIGN WITH `next-connect` PLUS AUTHENTICATION WITH JWT IN PERN STACK (ONLY TRIED FOR A MOMENT)
