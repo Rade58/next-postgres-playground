@@ -75,4 +75,12 @@ export default MyPostsPage;
 
 ```
 
+## PAGE FOR EDITING POST
 
+```
+mkdir pages/edit-post && touch "pages/edit-post/[id].tsx"
+```
+
+```tsx
+
+```
