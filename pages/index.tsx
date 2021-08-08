@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { supabase } from "../lib/supabase";
 
-interface DataI {
+export interface DataI {
   id: string;
   title: string;
   user_email: string;
