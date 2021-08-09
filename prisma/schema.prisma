@@ -29,6 +29,7 @@ model Person {
   email    String?   @unique
   articles Article[]
 
+
   // THIS I DECIDED TO COMMENT OUT (IT IS GOING TO BE IMPORTANT IF WE EVER
   // IN SOME OTHER PROJECT DECIDE TO USE NEXT-AUT)
   // WHICH WILL MAP THIS MODEL TO THE users CREATED BY NEXT-AUTH
@@ -41,6 +42,7 @@ model Person {
 
 
   // createdAt DateTime @default(now()) @map(name:"created_at")
+  // updatedAt DateTime @updatedAt @map(name: "updated_at")
 
   // @@map(name: "persons")
 }
