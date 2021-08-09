@@ -26,8 +26,59 @@ NEXT_PUBLIC_SUPABASE_URL=
 POSTGRES_URL=
 ```
 
+# LETS DEFINE ACTUAL CONNECTING TO THE DATBASE
 
+```
+mkdir db/supa && touch db/supa/index.ts
+```
 
+```ts
+import { Pool } from "pg";
 
+const pool = new Pool({
+  connectionString: process.env.POSTGRES_URL as string,
+});
 
+export const makeDbClient = async () => pool.connect();
+```
+
+WE WILL USE THING BOVE TO CONNECT WHEN WE TRY TO QUERY IN OUR HANDLERS
+
+## LETS TEST IT BY BUILDING ONE ENDPOINT, THAT WILL QUERY FOR ALL POSTS
+
+```
+touch pages/api/all-posts.ts
+```
+
+```ts
+import nc from "next-connect";
+import type { NextApiRequest, NextApiResponse } from "next";
+
+import { makeDbClient } from "../../db/supa";
+
+const handler = nc<NextApiRequest, NextApiResponse>();
+
+handler.get(async (req, res) => {
+  const dbClient = await makeDbClient();
+
+  const data = await dbClient.query("SELECT * FROM posts;");
+
+  console.log({ data });
+
+  res.status(200).json(data);
+});
+
+export default handler;
+
+```
+
+```
+yarn dev
+```
+
+LETS TEST THIS WITH HTTPIE
+
+```
+http GET :3000/api/all-posts
+```
 
