@@ -19,8 +19,14 @@ WHERE I FOUND MENTIONED GUIDE:
 
 <https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgres>
 
-# BUT ALSO NEXTJS HAS VERY GOOD TUTORIAL
+## BUT ALSO NEXTJS HAS VERY GOOD TUTORIAL
 
 <https://vercel.com/guides/nextjs-prisma-postgres>
 
 WHICH INCLUDES MANY MORE THINGS (ONE OF THEM IS NEXT-AUTH)
+
+# LETS START BY INSTALLING PRISMA
+
+```
+yarn add prisma
+```
