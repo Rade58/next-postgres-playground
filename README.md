@@ -74,7 +74,7 @@ NEXT_PUBLIC_SUPABASE_URL=
 # BY USING node-postgres
 POSTGRES_URL=
 
-# WE ADDED THIS NOW
+# ---------------- WE ADDED THIS NOW -----------------
 
 # Environment variables declared in this file are automatically made available to Prisma.
 # See the documentation for more detail: https://pris.ly/d/prisma-schema#using-environment-variables
