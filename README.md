@@ -37,7 +37,7 @@ THAT'S ALL BECAUSE WE DON'T HAVE .env (WHICH WILL ALSO BE GENERATED)
 yarn add prisma
 ```
 
-# LETS INITIALIZE PRISMA
+# LETS INITIALIZE PRISMA, AND THEN LETS ADD URL OF OUR POSTGRES INSTANE AS AN ENV VARIABLE
 
 ```
 npx prisma init
@@ -63,6 +63,8 @@ DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=pub
 
 **SO WE REMOVED .env AND ADDED CODE ABOVE, TO THE `.env.local`**
 
+**AND WE SPECIFIED URL OF OUR UPABASE DATBASE**
+
 `.env.local` :
 
 ```py
@@ -83,7 +85,24 @@ POSTGRES_URL=
 # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
 
 # THIS IS THE SAME URL AS ABOVE (HOPE THAT IS CLEAR TO YOU)
-DATABASE_URL=
+DATABASE_URL=<WE ADDED URL HERE>
 ```
 
+# LETS REVIEW A LITLE BIT, GENERATED FILE `prisma/schema.prisma`
 
+WE CAN SEE THAT URL IS 
+
+```ts
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+```
