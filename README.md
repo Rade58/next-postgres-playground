@@ -69,7 +69,6 @@ handler.get(async (req, res) => {
 });
 
 export default handler;
-
 ```
 
 ```
@@ -82,3 +81,4 @@ LETS TEST THIS WITH HTTPIE
 http GET :3000/api/all-posts
 ```
 
+AND WE GOT OUR DATA
