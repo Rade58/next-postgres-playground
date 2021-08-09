@@ -97,3 +97,5 @@ model Person {
   // @@map(name: "persons")
 }
 ```
+
+## I'LL SHOW YOU HOW TO APPPLY SCHEMA IN NEST BRANCH
