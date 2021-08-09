@@ -44,6 +44,56 @@ LET ME REMIND YOU, WE ARE DOING THIS IN A `prisma/schema.prisma` FILE THAT IS GE
 code prisma/schema.prisma
 ```
 
-```sdl
+```c#
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// WE ARE ADDING THIS
+
+model Article {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    Person? @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}
+
+// AND THIS
+
+model Person {
+  id       Int       @id @default(autoincrement())
+  name     String?
+  email    String?   @unique
+  articles Article[] // THIS IS APARENTLY REQUIRED
+  // BECAUSE IN Article WE ARE USING FOREGEIN KEY FOR
+  // A Person (AND WHEN WE DO THAT WE ALSO NEED TO ENTER
+  //        articles Article[]    )
+
+
+  // THIS I DECIDED TO COMMENT OUT (IT IS GOING TO BE IMPORTANT IF WE EVER
+  // IN SOME OTHER PROJECT DECIDE TO USE NEXT-AUT)
+  // WHICH WILL MAP THIS MODEL TO THE users CREATED BY NEXT-AUTH
+
+  // >> NOTE: You're occasionally using
+  // >> `@map`and`@@map`to map some field and model names
+  // >> to different column and table names in the underlying database.
+  // >> This is because NextAuth.js has some special
+  // >> requirements for calling things in your database a certain way.
+
+
+  // createdAt DateTime @default(now()) @map(name:"created_at")
+  // updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  // @@map(name: "persons")
+}
 ```
