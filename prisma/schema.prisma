@@ -27,7 +27,10 @@ model Person {
   id       Int       @id @default(autoincrement())
   name     String?
   email    String?   @unique
-  articles Article[]
+  articles Article[] // THIS IS APARENTLY REQUIRED
+  // BECAUSE IN Article WE ARE USING FOREGEIN KEY FOR
+  // A Person (AND WHEN WE DO THAT WE ALSO NEED TO ENTER
+  //        articles Article[]    )
 
 
   // THIS I DECIDED TO COMMENT OUT (IT IS GOING TO BE IMPORTANT IF WE EVER
