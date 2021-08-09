@@ -8,5 +8,26 @@ TIS TUTORIAL CAN HELP:
 
 <https://dev.to/prisma/set-up-a-free-postgresql-database-on-supabase-to-use-with-prisma-3pk6>
 
-## 
+## IN SUPABASE GO TO `Settings -> Database`, AND THERE YOU CAN FIND `Connection String`
+
+ONLY THING YOU NEED TO INSERT INSIDE URLL IS PASSWORD WE SETTED WHEN WE CREATED SUPABASE PROJECT
+
+WE CAN ADD THIS STRING TO THE `.env.local`
+
+```
+code .env.local
+```
+
+```py
+# WHEN WE USE SUPABASE CLIENT WE USE THESE TWO
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_URL=
+# WHEN WE WANT TO USE URL OF OUR DATBASE, WE USE THIS URL
+POSTGRES_URL=
+```
+
+
+
+
+
 
