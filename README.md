@@ -8,3 +8,13 @@ AND MAYBE WATCH THIS VIDEO
 
 <https://www.youtube.com/watch?v=mU8-nKwfw4Y&t=21s>
 
+## THIS IS PRISMAS PAGE
+
+<https://www.prisma.io/>
+
+
+WHERE I FOUND THIS HELPFUL GUIDE:
+
+<https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgres>
+
+
