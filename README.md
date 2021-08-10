@@ -1,6 +1,10 @@
-## I'LL SHOW YOU HOW TO CREATE AND QUERY DUMMY DATA USING `PRISMA STUDIO`
+# PRISMA CLIENT WAS GENERATED FOR US WHEN WE RUNNED `yarn prisma:db:push`
 
-LETS MAKE SCRIPT AGAINN SINCE WE NEED TO SPECIFY THAT WE ARE USING DTABASE URL FROM .env.local FILE
+SO WE DON'T NEED TO INSTALL IT
+
+IF YOU WANT TO INSTALLL IT (IF YOU WANT TO RUN `yarn add @prisma/client`), AFTER YOU DO THAT, EVERY TIME YOU WOULD NEED TO RUN `npx prisma generate`, **BECAUSE CLIENT NEEDS TO BE TAILORED TO YOUR OWN SCHEMA** (SPAECIALY GENERATED FOR YOUR SCHEMA) (KEEP THIS IN MIND)
+
+SO WE COULDA ADD NEW SCRIPT JUST TO HAVE IT
 
 ```
 code package.json
@@ -8,25 +12,12 @@ code package.json
 
 ```json
 "scripts": {
-    
-    "prisma:db:push": "dotenv -e .env.local -- npx prisma db push",
-    // ADDDED THIS
-    "prisma:studio": "dotenv -e .env.local -- npx prisma studio",
-    
-  },
+  "prisma:db:push": "dotenv -e .env.local -- npx prisma db push",
+  "prisma:studio": "dotenv -e .env.local -- npx prisma studio",
+  // ADDED THIS (WE RUNN THIS AFTER EVERY TIME WE DO `yarn add /@prisma/client`)
+  "prisma:generate:client": "dotenv -e .env.local -- npx prisma generate",
+}
 ```
 
-LETS RUN IT
 
-```
-yarn prisma:studio
-```
-
-STUDIO IS REACT APP SERVED ON <http://localhost:5555/>
-
-**TRY TO CREATE RECORDS IN Users NA Posts TABLES**
-
-I DID IT SUCCESSFULLY
-
-## IN NEXT BRANCH WE ARE GOING TO USE PRISMA CLIENT
 
