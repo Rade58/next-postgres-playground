@@ -19,5 +19,8 @@ code package.json
 }
 ```
 
+# SO LETS USE PRISMA CLIENT
+
+WE WILL ADD EVERYTHING WE NEED TO THE `/lib` FOLDER
 
 
