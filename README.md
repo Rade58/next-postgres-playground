@@ -40,3 +40,8 @@ yarn prisma:db:push
 ## IN NEXT BRANCH I'LL SHOW YOU HOW TO CREATE AND QUERY DUMMY DATA USING `PRISMA STUDIO`
 
 <!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
