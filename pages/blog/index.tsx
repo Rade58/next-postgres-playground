@@ -1,7 +1,7 @@
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent } from "react";
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 
 // TYPES FOR OUR DATA ARE ALSO AVAILABLE
 // WE JUST NED Post FOR NOW
@@ -20,7 +20,7 @@ interface PropsI {
   })[];
 }
 
-export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
+export const getStaticProps: GetStaticProps<PropsI> = async (ctx) => {
   // WE WILL QUERY FOR ALL POSTS IN HERE
 
   const allPosts = await prismaClient.post.findMany({

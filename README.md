@@ -57,7 +57,7 @@ export default prisma;
 mkdir pages/blog && touch pages/blog/index.tsx
 ```
 
-WE WILL USE `getServerSideProps` FOR THIS PAGE
+WE WILL USE `getStaticProps` FOR THIS PAGE (LIKE ALWAYS (LIKE IN OTHER APPLICATIONS) WHEN WE DISPLAYING ALL POSTS)
 
 ```tsx
 /* eslint react/react-in-jsx-scope: 0 */
@@ -128,3 +128,6 @@ yarn dev
 GO TO THE: <http://localhost:3000/blog>
 
 YES AND DATA IS REALLY THERE
+
+# LET'S NOW CREATE PAGE WITH DYNAMIC ROUTE, INTENDED FOR DISPLAYING DATA OF THE SINGE POST, AND YS, WE WILL USE `getServerSideProps`
+
