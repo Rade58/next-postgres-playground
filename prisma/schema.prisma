@@ -12,25 +12,25 @@ generator client {
 
 // WE ARE ADDING THIS
 
-model Article {
+model Post {
   id        Int     @id @default(autoincrement())
   title     String
   content   String?
   published Boolean @default(false)
-  author    Person? @relation(fields: [authorId], references: [id])
+  author    User?   @relation(fields: [authorId], references: [id])
   authorId  Int?
 }
 
 // AND THIS
 
-model Person {
-  id       Int       @id @default(autoincrement())
-  name     String?
-  email    String?   @unique
-  articles Article[] // THIS IS APARENTLY REQUIRED
-  // BECAUSE IN Article WE ARE USING FOREGEIN KEY FOR
-  // A Person (AND WHEN WE DO THAT WE ALSO NEED TO ENTER
-  //        articles Article[]    )
+model User {
+  id    Int     @id @default(autoincrement())
+  name  String?
+  email String? @unique
+  posts Post[] // THIS IS APARENTLY REQUIRED
+  // BECAUSE IN Post WE ARE USING FOREGEIN KEY FOR
+  // A User (AND WHEN WE DO THAT WE ALSO NEED TO ENTER
+  //        posts Post[]    )
 
 
   // THIS I DECIDED TO COMMENT OUT (IT IS GOING TO BE IMPORTANT IF WE EVER
