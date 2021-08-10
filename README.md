@@ -125,15 +125,7 @@ const IndexBlogPage: FunctionComponent<PropsI> = (props) => {
 export default IndexBlogPage;
 ```
 
-LETS TRY THIS
 
-```
-yarn dev
-```
-
-GO TO THE: <http://localhost:3000/blog>
-
-YES AND DATA IS REALLY THERE
 
 # LET'S NOW CREATE PAGE WITH DYNAMIC ROUTE, INTENDED FOR DISPLAYING DATA OF THE SINGE POST, AND THIS TIME, WE WILL USE `getServerSideProps`
 
@@ -204,3 +196,13 @@ const IndexPage: FunctionComponent<PropsI> = (props) => {
 
 export default IndexPage;
 ```
+
+LETS TRY THIS
+
+```
+yarn dev
+```
+
+GO TO THE: <http://localhost:3000/blog>
+
+AND EVERYTHING SEEMS TO WORK AS I EXPECTED
