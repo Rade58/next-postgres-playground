@@ -32,7 +32,7 @@ import { PrismaClient } from "@prisma/client";
 
 let prisma: PrismaClient;
 
-declare module global {
+declare namespace global {
   let prisma: PrismaClient;
 }
 
@@ -47,7 +47,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 export default prisma;
-
 ```
 
 ## SO NOW WHEN WE NEED TO DEFINE QUERIES OR MUTATIONS WE USE CLIENT WE REATED

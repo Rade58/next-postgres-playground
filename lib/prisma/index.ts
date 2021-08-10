@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 let prisma: PrismaClient;
 
-declare module global {
+declare namespace global {
   let prisma: PrismaClient;
 }
 
