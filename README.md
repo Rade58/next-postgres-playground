@@ -109,7 +109,11 @@ const IndexBlogPage: FunctionComponent<PropsI> = (props) => {
 
   const { allPosts } = props;
 
-  return <div>{JSON.stringify({ allPosts })}</div>;
+  return (
+    <div>
+      <pre>{JSON.stringify({ allPosts }, null, 2)}</pre>
+    </div>
+  );
 };
 
 export default IndexBlogPage;
