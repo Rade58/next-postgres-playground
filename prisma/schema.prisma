@@ -10,8 +10,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// WE ARE ADDING THIS
-
 model Post {
   id        Int     @id @default(autoincrement())
   title     String
@@ -21,27 +19,54 @@ model Post {
   authorId  Int?
 }
 
-// AND THIS
-
 model User {
   id    Int     @id @default(autoincrement())
   name  String?
   email String? @unique
-  posts Post[] // THIS IS APARENTLY REQUIRED
-  // BECAUSE IN Post WE ARE USING FOREGEIN KEY FOR
-  // A User (AND WHEN WE DO THAT WE ALSO NEED TO ENTER
-  //        posts Post[]    )
-
-  // NOTE:
-  // >> You're occasionally using
-  // >> `@map`and`@@map`to map some field and model names
-  // >> to different column and table names in the underlying database.
-  // >> This is because NextAuth.js has some special
-  // >> requirements for calling things in your database a certain way.
-
+  posts Post[]
 
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
 
   @@map(name: "user")
 }
+
+// ADDING THESE
+
+model Account {
+  id                 Int       @id @default(autoincrement())
+  compoundId         String    @unique @map(name: "compound_id")
+  userId             Int       @map(name: "user_id")
+  providerType       String    @map(name: "provider_type")
+  providerId         String    @map(name: "provider_id")
+  providerAccountId  String    @map(name: "provider_account_id")
+  refreshToken       String?   @map(name: "refresh_token")
+  accessToken        String?   @map(name: "access_token")
+  accessTokenExpires DateTime? @map(name: "access_token_expires")
+  createdAt          DateTime  @default(now()) @map(name: "created_at")
+  updatedAt          DateTime  @default(now()) @map(name: "updated_at")
+
+
+  @@index([providerAccountId], name: "providerAccountId")
+  @@index([providerId], name: "providerId")
+  @@index([userId], name: "userId")
+  @@map(name: "accounts")
+}
+
+// AND THESE
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @map(name: "user_id")
+  expires      DateTime
+  sessionToken String   @unique @map(name: "session_token")
+  accessToken  String   @unique @map(name: "access_token")
+  createdAt    DateTime @default(now()) @map(name: "creared_at")
+  updatedAt    DateTime @default(now()) @map(name: "updated_at")
+
+  @@map(name: "sessions")
+
+}
+
+
+
