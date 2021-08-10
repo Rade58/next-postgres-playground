@@ -19,6 +19,6 @@ code package.json
 ```json
 "scripts": {
     
-  "prisma:db:push": "dotenv -e .env.local -- npx prisma dp push"
+  "prisma:db:push": "dotenv -e .env.local -- npx prisma db push"
 },
 ```
