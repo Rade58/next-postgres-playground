@@ -49,13 +49,17 @@ const IndexBlogPage: FunctionComponent<PropsI> = (props) => {
 
   return (
     <div>
-      {allPosts.map(({ title, id }, i) => {
-        return (
-          <Link key={i} href={`/blog/p/${id}`}>
-            <a>{title}</a>
-          </Link>
-        );
-      })}
+      <ul>
+        {allPosts.map(({ title, id }, i) => {
+          return (
+            <li key={i} className="border-gray-600 border">
+              <Link href={`/blog/p/${id}`}>
+                <a className="hover:underline">{title}</a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
