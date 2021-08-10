@@ -52,3 +52,13 @@ export default prisma;
 **SO NOW WHEN WE NEED TO DEFINE QUERIES OR MUTATIONS WE USE CLIENT WE REATED**
 
 # LETS NOW TRY QUERYING BY USING PRISMA CLIENT` AND DISPLAYING DATA IN OUR APPLICATION
+
+```
+mkdir pages/blog && touch pages/blog/index.tsx
+```
+
+WE WILL USE `getServerSideProps` FOR THIS PAGE
+
+```tsx
+
+```
