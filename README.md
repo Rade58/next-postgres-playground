@@ -101,3 +101,4 @@ model Session {
 yarn prisma:db:push
 ```
 
+**THIS ALSO MODIFIED INSTANCE OF OUR `"@prisma/client"` PACKE, SO WE CAN QUERY AND MUTATE THESE NEW TABLES**
