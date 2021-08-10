@@ -40,7 +40,10 @@ model Post {
   authorId  Int?
 }
 
-// AND THIS
+// AND THIS (BUT THIS IS NOT ONLY SCHEMA WE WOULD SET
+// BECAUSE FOR NEXT AUTH WE NEED SESSIONS (YES SESSION WIL BE KEPT
+// IN DATBASE TOO) AND SOME OTHER THINGS)
+// BUT FOR NOW WE WILL DEFINE ONLY User
 
 model User {
   id    Int     @id @default(autoincrement())
