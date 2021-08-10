@@ -129,5 +129,12 @@ GO TO THE: <http://localhost:3000/blog>
 
 YES AND DATA IS REALLY THERE
 
-# LET'S NOW CREATE PAGE WITH DYNAMIC ROUTE, INTENDED FOR DISPLAYING DATA OF THE SINGE POST, AND YS, WE WILL USE `getServerSideProps`
+# LET'S NOW CREATE PAGE WITH DYNAMIC ROUTE, INTENDED FOR DISPLAYING DATA OF THE SINGE POST, AND THIS TIME, WE WILL USE `getServerSideProps`
 
+```
+mkdir pages/blog/p && touch "pages/blog/p/[postId].tsx"
+```
+
+```tsx
+
+```
