@@ -94,3 +94,10 @@ model Session {
 }
 
 ```
+
+# NOW WE CAN CREATE SCRIPT WE CREATED EARLIER, THAT WILL BUILD NEW TABLES IN OUR DATABASE
+
+```
+yarn prisma:db:push
+```
+
