@@ -126,3 +126,5 @@ yarn dev
 ```
 
 GO TO THE: <http://localhost:3000/blog>
+
+YES AND DATA IS REALLY THERE
