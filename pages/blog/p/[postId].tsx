@@ -4,10 +4,18 @@ import { FunctionComponent } from "react";
 // UVESCU, NEKE TYPE-OVE KOJI SE TICU getServerSideProps-A
 import type { GetServerSideProps } from "next";
 
+import type { Post } from "@prisma/client";
+
 import prismaClient from "../../../lib/prisma";
 
 interface PropsI {
-  placeholder: boolean;
+  post:
+    | (Post & {
+        author: {
+          name: string | null;
+        } | null;
+      })
+    | null;
 }
 
 type queryPramType = {
@@ -37,17 +45,17 @@ export const getServerSideProps: GetServerSideProps<PropsI, queryPramType> =
 
     return {
       props: {
-        placeholder: true,
+        post,
       },
     };
   };
 
 const IndexPage: FunctionComponent<PropsI> = (props) => {
-  //
+  const { post } = props;
 
-  console.log(props);
+  // LETS JUST RENDER JSON
 
-  return <div>🦉</div>;
+  return <div>{JSON.stringify({ post }, null, 2)}</div>;
 };
 
 export default IndexPage;

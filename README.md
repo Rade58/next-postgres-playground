@@ -63,7 +63,9 @@ WE WILL USE `getStaticProps` FOR THIS PAGE (LIKE ALWAYS (LIKE IN OTHER APPLICATI
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent } from "react";
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
+
+import Link from "next/link";
 
 // TYPES FOR OUR DATA ARE ALSO AVAILABLE
 // WE JUST NED Post FOR NOW
@@ -82,7 +84,7 @@ interface PropsI {
   })[];
 }
 
-export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
+export const getStaticProps: GetStaticProps<PropsI> = async (ctx) => {
   // WE WILL QUERY FOR ALL POSTS IN HERE
 
   const allPosts = await prismaClient.post.findMany({
@@ -105,13 +107,17 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 };
 
 const IndexBlogPage: FunctionComponent<PropsI> = (props) => {
-  // LETS JUST DISPLAY STRING FOR NOW
-
   const { allPosts } = props;
 
   return (
     <div>
-      <pre>{JSON.stringify({ allPosts }, null, 2)}</pre>
+      {allPosts.map(({ title, id }, i) => {
+        return (
+          <Link key={i} href={`/blog/p/${id}`}>
+            <a>{title}</a>
+          </Link>
+        );
+      })}
     </div>
   );
 };

@@ -3,6 +3,8 @@
 import { FunctionComponent } from "react";
 import type { GetStaticProps } from "next";
 
+import Link from "next/link";
+
 // TYPES FOR OUR DATA ARE ALSO AVAILABLE
 // WE JUST NED Post FOR NOW
 // BUT I AM SHOWING YOU THAT YOU HAVE ALL TYPES FOR DATA
@@ -43,13 +45,17 @@ export const getStaticProps: GetStaticProps<PropsI> = async (ctx) => {
 };
 
 const IndexBlogPage: FunctionComponent<PropsI> = (props) => {
-  // LETS JUST DISPLAY STRING FOR NOW
-
   const { allPosts } = props;
 
   return (
     <div>
-      <pre>{JSON.stringify({ allPosts }, null, 2)}</pre>
+      {allPosts.map(({ title, id }, i) => {
+        return (
+          <Link key={i} href={`/blog/p/${id}`}>
+            <a>{title}</a>
+          </Link>
+        );
+      })}
     </div>
   );
 };
