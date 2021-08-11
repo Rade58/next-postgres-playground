@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 
 import { supabase } from "../lib/supabase";
 
+import Header from "../components/Header";
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<null | User>(null);
 
@@ -39,6 +41,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div>
+      {isBlog && <Header />}
+
       {!isBlog && (
         <nav className="p-6 border-b border-gray-300">
           <Link href="/">
