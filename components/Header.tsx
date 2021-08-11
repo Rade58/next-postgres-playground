@@ -77,10 +77,10 @@ const Header: FC = () => {
     </div>
   );
 
-  const RightWithSession: FC = () => (
+  const RightWithSession: FC<{ session: any }> = ({ session }) => (
     <div className="right">
       <p className="inline-block text-sm pr-4">
-        {session?.user?.name} ({session?.user?.email})
+        {session.user.name} ({session.user.email})
       </p>
       <Link href="/blog/create">
         <a className="font-bold no-underline inline-block">
@@ -118,7 +118,7 @@ const Header: FC = () => {
 
   if (session) {
     left = <LeftfeedAndDrafts />;
-    right = <RightWithSession />;
+    right = <RightWithSession session={session} />;
   }
 
   return (
