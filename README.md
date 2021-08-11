@@ -84,6 +84,9 @@ const Header: FC = () => {
 
   const RightJustSignIn: FC = () => (
     <div className="right">
+    {/* ON THIS PAGE YOU WILL SEE AOUTH SIGNIN BUTTONS
+    BUT WE DIDDN'T DEFINED ANY (WE WILL DO IT FOR GITHUB PRETTY SOON)
+    */}
       <Link href="/api/auth/signin">
         <a
           data-active={isActive("/blog/signup")}
