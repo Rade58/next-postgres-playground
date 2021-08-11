@@ -26,6 +26,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { signOut, useSession } from "next-auth/client";
+import type { Session } from "next-auth";
 
 const Header: FC = () => {
   const router = useRouter();
@@ -94,10 +95,10 @@ const Header: FC = () => {
     </div>
   );
 
-  const RightWithSession: FC<{ session: any }> = ({ session }) => (
+  const RightWithSession: FC<{ session: Session }> = ({ session }) => (
     <div className="right">
       <p className="inline-block text-sm pr-4">
-        {session.user.name} ({session.user.email})
+        {session.user?.name} ({session.user?.email})
       </p>
       <Link href="/blog/create">
         <a className="font-bold no-underline inline-block">
@@ -177,3 +178,13 @@ yarn dev
 **SINCE WE DIDN'T ADD LOGIC (SERVER SIDE CODE) FOR NEXT AUTH (A CODE FPOR OBTAINING A USER)** WE SHOULD ONLY SEE Feed LINK TO THE LEFT AND Login BUTTON TO THE RIGHT
 
 PRESSING LOGIN SHOULD HIT ENDPOINT /api/signin (BUT WE DON'T HAVE THAT ENPOINT ) **AND WE WILL SE 404 PAGE WHEN WE PRESS THAT**
+
+# SETTING UP SPECIAL `/api/auth/[...nextauth]` ROUTE; BUT NOW, WEE NEED TO HAVE PRISAM IN MIND, SO WE WILL ALSO USE PRISAM ADAPTER
+
+```
+mkdir pages/api/auth && touch "pages/api/auth/[...nextauth].ts"
+```
+
+```ts
+
+```

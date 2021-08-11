@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { signOut, useSession } from "next-auth/client";
+import type { Session } from "next-auth";
 
 const Header: FC = () => {
   const router = useRouter();
@@ -77,10 +78,10 @@ const Header: FC = () => {
     </div>
   );
 
-  const RightWithSession: FC<{ session: any }> = ({ session }) => (
+  const RightWithSession: FC<{ session: Session }> = ({ session }) => (
     <div className="right">
       <p className="inline-block text-sm pr-4">
-        {session.user.name} ({session.user.email})
+        {session.user?.name} ({session.user?.email})
       </p>
       <Link href="/blog/create">
         <a className="font-bold no-underline inline-block">
