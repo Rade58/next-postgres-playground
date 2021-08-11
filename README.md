@@ -7,6 +7,10 @@ HEADER IS GOING TO BE BUILD WITH TWO SIDES: left AND  RIGHT WHICH ARE GOING TO B
 CONDITIONALLY LEFT SIDE WILL HAVE NAVIGATION RELATED THINGS, AND RIGHT SIDE WILL HAVE SIGNOUT BUTTONS
 
 ```
+yarn add @emotion/react
+```
+
+```
 mkdir components && touch components/Header.tsx
 ```
 
