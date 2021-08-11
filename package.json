@@ -11,7 +11,8 @@
     "prisma:studio": "dotenv -e .env.local -- npx prisma studio",
     "prisma:generate:client": "dotenv -e .env.local -- npx prisma generate",
     "prisma:introspect": "dotenv -e .env.local -- npx prisma introspect",
-    "prisma:migrate": "dotenv -e .env.local -- npx prisma migrate dev --name init"
+    "prisma:migrate:init": "dotenv -e .env.local -- npx prisma migrate dev --name init",
+    "prisma:migrate": "dotenv -e .env.local -- npx prisma migrate dev"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",

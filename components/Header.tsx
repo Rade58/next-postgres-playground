@@ -59,7 +59,7 @@ const Header: FC = () => {
           data-active={isActive("/blog/drafts")}
           className="font-bold text-gray-900 inline-block no-underline"
         >
-          Feed
+          Drafts
         </a>
       </Link>
     </div>

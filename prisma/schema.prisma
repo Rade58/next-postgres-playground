@@ -23,6 +23,7 @@ model User {
   id    Int     @id @default(autoincrement())
   name  String?
   email String? @unique
+  image String?
   posts Post[]
 
   createdAt DateTime @default(now()) @map(name: "created_at")
@@ -64,9 +65,6 @@ model Session {
   createdAt    DateTime @default(now()) @map(name: "creared_at")
   updatedAt    DateTime @default(now()) @map(name: "updated_at")
 
+
   @@map(name: "sessions")
-
 }
-
-
-
