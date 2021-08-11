@@ -16,23 +16,19 @@ const Header: FC = () => {
 
   const isActive = (pathname: string): boolean => router.pathname === pathname;
 
-  let left = (
+  const LeftJustFeed: FC = () => (
     <div
       className="left"
       css={css`
         & a[data-active="true"] {
           color: gray;
         }
-
-        & a + a {
-          margin-left: 1rem;
-        }
       `}
     >
       <Link href="/blog">
         <a
           data-active={isActive("/blog")}
-          className="font-bold text-gray-900 inline-block"
+          className="font-bold text-gray-900 inline-block no-underline"
         >
           Feed
         </a>
@@ -40,10 +36,110 @@ const Header: FC = () => {
     </div>
   );
 
+  const LeftfeedAndDrafts: FC = () => (
+    <div
+      className="left"
+      css={css`
+        & a[data-active="true"] {
+          color: gray;
+        }
+      `}
+    >
+      <Link href="/blog">
+        <a
+          data-active={isActive("/blog")}
+          className="font-bold text-gray-900 inline-block no-underline"
+        >
+          Feed
+        </a>
+      </Link>
+      <Link href="/blog/drafts">
+        <a
+          data-active={isActive("/blog/drafts")}
+          className="font-bold text-gray-900 inline-block no-underline"
+        >
+          Feed
+        </a>
+      </Link>
+    </div>
+  );
+
+  const RightJustSignIn: FC = () => (
+    <div className="right">
+      <Link href="/api/auth/signin">
+        <a
+          data-active={isActive("/blog/signup")}
+          className="no-underline text-gray-900 inline-block"
+        >
+          Log in
+        </a>
+      </Link>
+    </div>
+  );
+
+  const RightWithSession: FC = () => (
+    <div className="right">
+      <p className="inline-block text-sm pr-4">
+        {session?.user?.name} ({session?.user?.email})
+      </p>
+      <Link href="/blog/create">
+        <a className="font-bold no-underline inline-block">
+          <button>New Post</button>
+        </a>
+      </Link>
+      <button
+        className="border-0"
+        onClick={() => {
+          signOut();
+        }}
+      >
+        Log out
+      </button>
+    </div>
+  );
+
+  let left = <LeftJustFeed />;
+
   let right = null;
 
+  if (loading) {
+    left = <LeftJustFeed />;
+
+    right = (
+      <div className="right">
+        <p>Validating session ...</p>
+      </div>
+    );
+  }
+
+  if (!session) {
+    right = <RightJustSignIn />;
+  }
+
+  if (session) {
+    left = <LeftfeedAndDrafts />;
+    right = <RightWithSession />;
+  }
+
   return (
-    <nav className="flex p-8 items-center">
+    <nav
+      className="flex p-8 items-center"
+      css={css`
+        & a + a {
+          margin-left: 1rem;
+        }
+
+        & .right {
+          margin-left: auto;
+
+          & a {
+            border: 1px solid black;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+          }
+        }
+      `}
+    >
       {left}
       {right}
     </nav>
