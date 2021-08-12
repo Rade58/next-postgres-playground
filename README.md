@@ -50,6 +50,10 @@ WE WON'T BE MODIFIING SCHEMA FOR INITIAL MIGRATION
 
 I CREATED THIS SCRIPT
 
+```
+code package.json
+```
+
 ```json
 "prisma:migrate:init": "dotenv -e .env.local -- npx prisma migrate dev --name init",
 ```
@@ -64,11 +68,17 @@ yarn prisma:migrate:init
 
 YOU CAN SEE BY YOURSELF WHAT STUFF IS IN MENTIONED FOLDER
 
-## LET'S NOW ADD A NEW MIGRATION SCRIPT, LETS THEN MODIFY OUR SCHEMA, AND AFTER THAT WE ARE GOING TO DO NEW MIGRATION
+## LET'S ADD A NEW MIGRATION SCRIPT, LETS THEN MODIFY OUR SCHEMA, AND AFTER THAT WE ARE GOING TO DO NEW MIGRATION
 
+```
+code package.json
+```
 
+```json
+"prisma:migrate": "dotenv -e .env.local -- npx prisma migrate dev",
+```
 
-
+**LETS MODIFY OUR SCHEMA**
 
 ```
 code prisma/schema.prisma
@@ -97,7 +107,11 @@ model User {
 // ...
 ```
 
+**WE ARE GOING TO EXECUTE NEW MIGRATION NOW**
 
+```
+yarn prisma:migrate
+```
 
 **JUST YOU KNOW, AFTER EVERY MIGRATION, PRISMA CLIENT IS UPDATED, ACTUALLY IT IS GENERATED AGAIN (I AM TALKING ABOUR @prisma/client PACKAGE WE HAVE, AND WE USED THAT PACKAGE TO QUERY NOT SO LONG AGO)**
 
