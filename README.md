@@ -189,5 +189,46 @@ mkdir pages/api/auth && touch "pages/api/auth/[...nextauth].ts"
 ```
 
 ```ts
+import { NextApiHandler } from "next";
+
+import NextAuth from "next-auth";
+import type { NextAuthOptions } from "next-auth";
+import Providers from "next-auth/providers";
+import Adapters from "next-auth/adapters";
+
+import prismaClient from "../../../lib/prisma";
+
+const options: NextAuthOptions = {
+  providers: [
+    Providers.GitHub({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+    Providers.Google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+  adapter: Adapters.Prisma.Adapter({ prisma: prismaClient }),
+};
+
+const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
+
+export default authHandler;
 
 ```
+
+## WE CAN FINALLY TEST OUR SIGNIN WITH GOOGLE OR GITHUB
+
+```
+yarn dev
+```
+
+BUT THIS IS NOT GOING TO WORK
+
+NEXT-AUTH IS NOT A PROBLEM
+
+`PROBLEMATIC IS OUR User MODEL` (**WE WILL ELABORATE ON THIS IN NEXT BRANCH**)
+
+AND FOR THE FIRST TIME WE WILL BE DOING PRISMA MIGRATION
+
