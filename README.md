@@ -393,3 +393,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default MyApp;
 ```
 
+**NOW WHEN WE USE `useSession` HOOK ACROSS OUR APP, ACROSS ALL OF OUR COMPONENTS, WE CAN OBTAIN SESSION OF SIGNED IN USER**
