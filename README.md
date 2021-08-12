@@ -178,3 +178,7 @@ AND THEN HIS POSTS WILL BE DISPLAYED ON /blog PAGE, WHERE ALL POSTS ARE BEING DI
 ```
 touch pages/blog/drafts.tsx
 ```
+
+```tsx
+
+```
