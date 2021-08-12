@@ -7,11 +7,15 @@ import type { FunctionComponent } from "react";
 import type { GetServerSideProps } from "next";
 
 // WE NEED SESSION ON SERVER SIDE
-import { getSession } from "next-auth/client";
+// AND ON CLIENT SIDE
+import { getSession, useSession } from "next-auth/client";
 
 import type { Post } from "@prisma/client";
 
 import prismaClient from "../../lib/prisma";
+
+import Layout from "../../components/Layout";
+import Draft from "../../components/Post";
 
 interface PropsI {
   drafts: Post[];
@@ -58,12 +62,33 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
   };
 };
 
-const IndexPage: FunctionComponent<PropsI> = (props) => {
+const DraftsPage: FunctionComponent<PropsI> = (props) => {
+  const { drafts } = props;
+
   //
+  const [session, isLoggedIn] = useSession();
 
-  console.log(props);
+  if (!isLoggedIn) {
+    return (
+      <Layout>
+        <h1>My Drafts</h1>
+        <p>You need to be signed in to view this page.</p>
+      </Layout>
+    );
+  }
 
-  return <div>🦉</div>;
+  return (
+    <Layout>
+      <div>
+        <h1>My Drafts</h1>
+        <main>
+          {drafts.map((draft) => (
+            <Draft key={draft.id} post={draft} />
+          ))}
+        </main>
+      </div>
+    </Layout>
+  );
 };
 
-export default IndexPage;
+export default DraftsPage;

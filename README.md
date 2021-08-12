@@ -177,6 +177,9 @@ AND THEN HIS POSTS WILL BE DISPLAYED ON /blog PAGE, WHERE ALL POSTS ARE BEING DI
 
 WE ARE GOING TO USE `getServerSideProps`, WHERE WE WILL USE `getSession` TO CHEC FOR CURRENT AUTHENTICATED USWR, AND WE WILL QUERY FOR ALL OF HIS POSTS
 
+**BUT ALSO JUST TO SHOW YOU THAT YOU CAN GET SESSION FRONT END TOO, WE WILL USE `useSession` HOOKK AT FRONTEND**
+
+
 ```
 touch components/Post.tsx
 ```
@@ -187,9 +190,9 @@ touch components/Post.tsx
 import React from "react";
 import type { FC } from "react";
 
-import type { Post } from "@prisma/client";
+import type { Post as PostI } from "@prisma/client";
 
-const Post: FC<{ post: Post }> = ({ post }) => {
+const Post: FC<{ post: PostI }> = ({ post }) => {
   const { title, content } = post;
 
   return (
@@ -208,5 +211,98 @@ touch pages/blog/drafts.tsx
 ```
 
 ```tsx
+/* eslint react/react-in-jsx-scope: 0 */
+/* eslint jsx-a11y/anchor-is-valid: 1 */
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx, css } from "@emotion/react";
+import type { FunctionComponent } from "react";
+import type { GetServerSideProps } from "next";
 
+// WE NEED SESSION ON SERVER SIDE
+// AND ON CLIENT SIDE
+import { getSession, useSession } from "next-auth/client";
+
+import type { Post } from "@prisma/client";
+
+import prismaClient from "../../lib/prisma";
+
+import Layout from "../../components/Layout";
+import Draft from "../../components/Post";
+
+interface PropsI {
+  drafts: Post[];
+}
+
+export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
+  const { req, res } = ctx;
+
+  // GETTING THE USER
+  const session = await getSession({
+    req,
+  });
+
+  if (!session || !session.user || !session.user.email) {
+    res.statusCode = 403;
+
+    return {
+      props: {
+        drafts: [],
+      },
+    };
+  }
+
+  const drafts = await prismaClient.post.findMany({
+    where: {
+      author: {
+        email: session.user.email,
+      },
+      published: false,
+    },
+    include: {
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
+
+  return {
+    props: {
+      drafts: [],
+    },
+  };
+};
+
+const DraftsPage: FunctionComponent<PropsI> = (props) => {
+  const { drafts } = props;
+
+  //
+  const [session, isLoggedIn] = useSession();
+
+  if (!isLoggedIn) {
+    return (
+      <Layout>
+        <h1>My Drafts</h1>
+        <p>You need to be signed in to view this page.</p>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <div>
+        <h1>My Drafts</h1>
+        <main>
+          {drafts.map((draft) => (
+            <Draft key={draft.id} post={draft} />
+          ))}
+        </main>
+      </div>
+    </Layout>
+  );
+};
+
+export default DraftsPage;
 ```

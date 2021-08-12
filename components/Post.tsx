@@ -3,9 +3,9 @@
 import React from "react";
 import type { FC } from "react";
 
-import type { Post } from "@prisma/client";
+import type { Post as PostI } from "@prisma/client";
 
-const Post: FC<{ post: Post }> = ({ post }) => {
+const Post: FC<{ post: PostI }> = ({ post }) => {
   const { title, content } = post;
 
   return (
