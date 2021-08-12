@@ -178,6 +178,32 @@ AND THEN HIS POSTS WILL BE DISPLAYED ON /blog PAGE, WHERE ALL POSTS ARE BEING DI
 WE ARE GOING TO USE `getServerSideProps`, WHERE WE WILL USE `getSession` TO CHEC FOR CURRENT AUTHENTICATED USWR, AND WE WILL QUERY FOR ALL OF HIS POSTS
 
 ```
+touch components/Post.tsx
+```
+
+```tsx
+/* eslint jsx-a11y/anchor-is-valid: 1 */
+/** @jsxRuntime classic */
+import React from "react";
+import type { FC } from "react";
+
+import type { Post } from "@prisma/client";
+
+const Post: FC<{ post: Post }> = ({ post }) => {
+  const { title, content } = post;
+
+  return (
+    <div className="mt-4 bg-white transition-shadow hover:shadow-lg">
+      <h3>{title}</h3>
+      <p>{content}</p>
+    </div>
+  );
+};
+
+export default Post;
+```
+
+```
 touch pages/blog/drafts.tsx
 ```
 
