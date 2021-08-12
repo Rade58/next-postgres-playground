@@ -6,7 +6,7 @@ import type { FC } from "react";
 
 const Layout: FC = ({ children }) => {
   return (
-    <main className="border-2 border-gray-600 bg-white p-12 flex justify-center items-center">
+    <main className="bg-white p-12 flex justify-center items-center">
       {children}
     </main>
   );
