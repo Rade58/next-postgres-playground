@@ -109,6 +109,8 @@ export default CreateBlogPost;
 
 ## LETS BUILD API ROUTE `/api/blog/post` (method "POST")
 
+CRUCIAL THING IS TO OBTAIN USER FROM THE SESSION, BECAUSE IF THERE IS NO USER YOUR MUTATION SHOULD FAIL
+
 ```
 mkdir -p pages/api/blog/post && touch pages/api/post/index.ts
 ```
