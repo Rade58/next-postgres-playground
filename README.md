@@ -1,5 +1,7 @@
 # FUNCTIONALITY FOR ADDING NEW BLOG POSTS
 
+## LET'S DEFINE FRONTEND FIRST
+
 ```
 touch components/Layout.tsx
 ```
@@ -20,7 +22,6 @@ const Layout: FC = ({ children }) => {
 };
 
 export default Layout;
-
 ```
 
 ```
@@ -49,7 +50,7 @@ const CreateBlogPost: FunctionComponent = () => {
     try {
       const body = JSON.stringify({ title, content });
 
-      await fetch("/api/post", {
+      await fetch("/api/blog/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,4 +105,10 @@ const CreateBlogPost: FunctionComponent = () => {
 };
 
 export default CreateBlogPost;
+```
+
+## LETS BUILD API ROUTE `/api/blog/post` (method "POST")
+
+```
+mkdir -p pages/api/blog/post && touch pages/api/post/index.ts
 ```

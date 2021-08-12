@@ -19,7 +19,7 @@ const CreateBlogPost: FunctionComponent = () => {
     try {
       const body = JSON.stringify({ title, content });
 
-      await fetch("/api/post", {
+      await fetch("/api/blog/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
