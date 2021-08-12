@@ -20,3 +20,22 @@ yarn add prisma --dev
 ```
 yarn add @prisma/client
 ```
+# BUT WHEN UPDATING PRISMA CLIENT, DON'T FORGET TO REGENERTE PRISMA CLIENT AFTER YOU DO THAT
+
+LIKE I SAID PRISMA CLIENT IS GENERATED TO FIT YOUR SCHEMA, YOUR TABLES
+
+SO YOU SHOUD RUN THIS SCRIPT WE CREATED EARLIER
+
+```
+cat package.json
+```
+
+```json
+"prisma:generate:client": "dotenv -e .env.local -- npx prisma generate",
+```
+
+SO DONT FORGET TO DO THAT
+
+```
+yarn prisma:generate:client
+```
