@@ -57,7 +57,11 @@ const CreateBlogPost: FunctionComponent = () => {
         },
         body,
       });
-
+      
+      // AFTER CREATING POST
+      // USER IS BEING REDIRECTED TO PAGE WHERE ALL OF THEIR 
+      // POSTS ARE 
+      // LISTED 
       await Router.push("/blog/drafts");
     } catch (err) {
       console.error(err);
