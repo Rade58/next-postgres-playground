@@ -188,6 +188,8 @@ PRESSING LOGIN SHOULD HIT ENDPOINT /api/signin (BUT WE DON'T HAVE THAT ENPOINT )
 
 THAT IS PART OF THE URL OF ENDPOINT WHERE WE ARE LATER GOING TO BUILD HANDLER FOR NEXT AUT
 
+**ALSO WE CAN SETUP ADDITIONAL SECRET**
+
 ```
 code .env.local
 ```
@@ -196,6 +198,7 @@ code .env.local
 # ADDED THIS
 
 NEXTAUTH_URL=http://localhost:3000/api/auth
+SECRET=pneumalateralus
 ```
 
 # SETTING UP SPECIAL `/api/auth/[...nextauth]` ROUTE; BUT NOW, WEE NEED TO HAVE PRISAM IN MIND, SO WE WILL ALSO USE PRISAM ADAPTER
@@ -226,7 +229,7 @@ const options: NextAuthOptions = {
     }),
   ],
   adapter: Adapters.Prisma.Adapter({ prisma: prismaClient }),
-  // THIS IS NOT REQUIRED, BUT I SETTED IT
+  // THIS IS NOT REQUIRED, BUT I SETTED IT (INSIDE .env.local)
   // JUST THINK OF SOME SECRET AND SET IT INSIDE .env.local
   secret: process.env.SECRET
 };
