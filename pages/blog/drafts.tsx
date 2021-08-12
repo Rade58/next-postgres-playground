@@ -3,11 +3,28 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
-
 import type { FunctionComponent } from "react";
+// UVESCU, NEKE TYPE-OVE KOJI SE TICU getServerSideProps-A
+import type { GetServerSideProps } from "next";
 
-const DraftsPage: FunctionComponent = () => {
-  return <div>👾</div>;
+interface PropsI {
+  placeholder: boolean;
+}
+
+const IndexPage: FunctionComponent<PropsI> = (props) => {
+  //
+
+  console.log(props);
+
+  return <div>🦉</div>;
 };
 
-export default DraftsPage;
+export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
+  return {
+    props: {
+      placeholder: true,
+    },
+  };
+};
+
+export default IndexPage;

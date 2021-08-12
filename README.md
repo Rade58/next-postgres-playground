@@ -138,7 +138,7 @@ handler.post(async (req, res) => {
   });
 
   if (!session || !session.user || !session.user.email) {
-    return res.status(400).send("Something went wrong");
+    return res.status(403).send("unauthorized");
   }
 
   const result = await prismaClient.post.create({
