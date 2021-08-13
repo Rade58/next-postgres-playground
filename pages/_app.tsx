@@ -7,7 +7,7 @@ import type { User } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 
 // WE IMPORTED THIS
-import { Provider } from "next-auth/client";
+// import { Provider } from "next-auth/client";
 //
 
 import { supabase } from "../lib/supabase";
@@ -71,9 +71,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="py-8 px-16">
         {/* WE ARE WRAPPING EVERYTHING IN PROVIDER
         AND PASSING SESSION FROM PROPS */}
-        <Provider session={pageProps.session}>
-          <Component {...pageProps} />
-        </Provider>
+        {/* <Provider session={pageProps.session}> */}
+        <Component {...pageProps} />
+        {/* </Provider> */}
       </div>
     </div>
   );
