@@ -35,20 +35,19 @@ handler.post(async (req, res) => {
     });
   }
 
-  if(!session.user.email && session.){
+  if (!session.user.email && session.id) {
     result = await prismaClient.post.create({
       data: {
         title,
         content,
         author: {
           connect: {
-            
+            id: parseInt(session.id as string),
           },
         },
       },
     });
   }
-
 
   res.status(201).json(result);
 });
