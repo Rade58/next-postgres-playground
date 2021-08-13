@@ -21,7 +21,7 @@ const options: NextAuthOptions = {
   adapter: Adapters.Prisma.Adapter({ prisma: prismaClient }),
   // THIS IS NOT REQUIRED, BUT I SETTED IT
   // JUST THINK OF SOME SECRET AND SET IT INSIDE .env.local
-  secret: process.env.SECRET
+  secret: process.env.SECRET,
 };
 
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);

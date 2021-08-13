@@ -31,9 +31,8 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 
   // I'M CHECKING IS THERE A name (NOT email)
   // BECAUSE SOMETIMES LIKE FOR GITHUB (email IS NOT PROVIDED)
+  console.log({ session });
   if (!session || !session.user || !session.user.name) {
-    console.log({ session });
-
     res.statusCode = 403;
 
     return {
@@ -61,7 +60,7 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 
   return {
     props: {
-      drafts: [],
+      drafts,
     },
   };
 };
@@ -70,9 +69,11 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
   const { drafts } = props;
 
   //
-  const [session, isLoggedIn] = useSession();
+  const [session] = useSession();
 
-  if (!isLoggedIn) {
+  console.log({ session });
+
+  /* if (!session) {
     return (
       <Layout>
         <h1>My Drafts</h1>
@@ -80,7 +81,7 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
       </Layout>
     );
   }
-
+ */
   return (
     <Layout>
       <div>

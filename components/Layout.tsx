@@ -5,11 +5,7 @@ import { jsx, css } from "@emotion/react";
 import type { FC } from "react";
 
 const Layout: FC = ({ children }) => {
-  return (
-    <main className="bg-white p-12 flex justify-center items-center">
-      {children}
-    </main>
-  );
+  return <main className="bg-white p-12">{children}</main>;
 };
 
 export default Layout;

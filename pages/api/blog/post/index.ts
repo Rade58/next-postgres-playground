@@ -19,17 +19,36 @@ handler.post(async (req, res) => {
     return res.status(403).send("unauthorized");
   }
 
-  const result = await prismaClient.post.create({
-    data: {
-      title,
-      content,
-      author: {
-        connect: {
-          email: session.user.email as string | "",
+  let result;
+
+  if (session.user.email) {
+    result = await prismaClient.post.create({
+      data: {
+        title,
+        content,
+        author: {
+          connect: {
+            email: session.user.email,
+          },
         },
       },
-    },
-  });
+    });
+  }
+
+  if(!session.user.email && session.){
+    result = await prismaClient.post.create({
+      data: {
+        title,
+        content,
+        author: {
+          connect: {
+            
+          },
+        },
+      },
+    });
+  }
+
 
   res.status(201).json(result);
 });
