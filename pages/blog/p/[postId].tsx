@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps<PropsI, queryPramType> =
     };
   };
 
-const IndexPage: FunctionComponent<PropsI> = (props) => {
+const PostPage: FunctionComponent<PropsI> = (props) => {
   const { post } = props;
 
   // LETS JUST RENDER JSON
@@ -58,4 +58,4 @@ const IndexPage: FunctionComponent<PropsI> = (props) => {
   return <div>{JSON.stringify({ post }, null, 2)}</div>;
 };
 
-export default IndexPage;
+export default PostPage;

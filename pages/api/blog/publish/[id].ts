@@ -1,14 +1,3 @@
-# FUNCTIONALITY FOR UPDATING Post RECORD
-
-WE ARE GOING TO DEFINE MUTATION, WHERE `published` FIELD IS BEING UPDATED ON Post RECORD
-
-**ALSO THIS TIME WE ARE GOING TO USE DYNAMIC ROUTE FOR OUR api**
-
-```
-mkdir pages/api/blog/publish && touch "pages/api/blog/publish/[id].ts"
-```
-
-```ts
 import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
 
@@ -32,4 +21,3 @@ handler.put(async (req, res) => {
 });
 
 export default handler;
-```
