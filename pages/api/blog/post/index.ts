@@ -19,6 +19,8 @@ handler.post(async (req, res) => {
     return res.status(403).send("unauthorized");
   }
 
+  
+
   let result;
 
   if (session.user.email) {
