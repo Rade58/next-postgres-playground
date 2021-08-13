@@ -21,6 +21,11 @@ handler.post(async (req, res) => {
 
   let result;
 
+  // REMEBER THAT WE ADDED id ON SESSION BECAUSE
+  // MAYBE THERE IS NO email ON session.user
+  // IN CASE OF GITHUB
+
+  // SO THIS IS FOR GOOGLE AUTH
   if (session.user.email) {
     result = await prismaClient.post.create({
       data: {
@@ -35,6 +40,9 @@ handler.post(async (req, res) => {
     });
   }
 
+  // IN LAST BRANCH WE DEFINED THAT id OBJECT IS GOING TO BE ON
+  // session
+  // AND IN CASE OF GITHUB THERE IS NOT email SO WE DO THIS
   if (!session.user.email && session.id) {
     result = await prismaClient.post.create({
       data: {

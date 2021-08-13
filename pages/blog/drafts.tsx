@@ -73,7 +73,7 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
 
   console.log({ session });
 
-  /* if (!session) {
+  if (!session) {
     return (
       <Layout>
         <h1>My Drafts</h1>
@@ -81,7 +81,7 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
       </Layout>
     );
   }
- */
+
   return (
     <Layout>
       <div>
