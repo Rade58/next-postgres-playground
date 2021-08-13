@@ -67,10 +67,10 @@ async function publish(id: string) {
   await Router.push("/blog");
 }
 
-// ------------ ADDING THIS ----------------
+// ------------ ADDING THIS (SAME URL BUT DIFFERENT METHOD) ----------------
 async function deletePost(id: string) {
   await fetch(`/api/blog/publish/${id}`, {
-    method: "PUT",
+    method: "DELETE",
   });
 
   await Router.push("/blog");
