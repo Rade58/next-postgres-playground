@@ -19,9 +19,19 @@ const options: NextAuthOptions = {
     }),
   ],
   adapter: Adapters.Prisma.Adapter({ prisma: prismaClient }),
-  // THIS IS NOT REQUIRED, BUT I SETTED IT
-  // JUST THINK OF SOME SECRET AND SET IT INSIDE .env.local
   secret: process.env.SECRET,
+
+  callbacks: {
+    // WE DEFINE CALLBACK FOR SESSION
+    // SECOND ARGUMENT IS user
+    session: async (session, user) => {
+      if (user.id) {
+        session.id = user.id;
+      }
+
+      return session;
+    },
+  },
 };
 
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
