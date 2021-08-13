@@ -8,8 +8,10 @@ const handler = nc<NextApiRequest, NextApiResponse>();
 handler.put(async (req, res) => {
   const { id } = req.query;
 
-  if (id.length) {
-    res.status(400).send("post you want to publish doesn't exists");
+  console.log({ id });
+
+  if (typeof id === "object") {
+    return res.status(400).send("post you want to publish doesn't exists");
   }
 
   const post = await prismaClient.post.update({
@@ -17,7 +19,7 @@ handler.put(async (req, res) => {
     data: { published: true },
   });
 
-  res.status(201).json(post);
+  return res.status(201).json(post);
 });
 
 export default handler;
