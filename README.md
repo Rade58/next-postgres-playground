@@ -217,7 +217,3 @@ export default PostPage;
 ```
 
 I TRIED THIS AND EVERYTHING SEEMS TO WORK CORRECTLY
-
-
-
-
