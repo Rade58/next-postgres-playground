@@ -243,12 +243,16 @@ touch pages/blog/drafts.tsx
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
+import { useEffect, useState } from "react";
 import type { FunctionComponent } from "react";
 import type { GetServerSideProps } from "next";
+import type { Session } from "next-auth";
 
-// WE NEED SESSION ON SERVER SIDE
-// AND ON CLIENT SIDE
-import { getSession, useSession } from "next-auth/client";
+// getSession WORKS CLIENT SIDE AND SERVER SIDE SO I'M GOING TO USE IT
+// ON BOTH PLACES
+// I'M NOT GOING TO USE useSession BECAUSE I HAD SOME PROBLEMS WITH IT
+// IT JUST DIDN'T WORK AS I EXPECTED
+import { getSession /*, useSession */ } from "next-auth/client";
 
 import type { Post } from "@prisma/client";
 
@@ -272,8 +276,6 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
   // I'M CHECKING IS THERE A name (NOT email)
   // BECAUSE SOMETIMES LIKE FOR GITHUB (email IS NOT PROVIDED)
   if (!session || !session.user || !session.user.name) {
-    console.log({ session });
-
     res.statusCode = 403;
 
     return {
@@ -301,7 +303,7 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 
   return {
     props: {
-      drafts: [],
+      drafts,
     },
   };
 };
@@ -309,10 +311,20 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 const DraftsPage: FunctionComponent<PropsI> = (props) => {
   const { drafts } = props;
 
-  //
-  const [session, isLoggedIn] = useSession();
+  // SINCE I DECIDED NOT TO USE useSession
+  // I'M GOING TO GET SESSION LIKE THIS
+  // -----------------------------
+  const [session, setSession] = useState<Session | null>();
 
-  if (!isLoggedIn) {
+  useEffect(() => {
+    getSession().then((ses) => {
+      if (ses) setSession(ses);
+    });
+  }, [setSession]);
+
+  // ----------------------------
+
+  if (!session) {
     return (
       <Layout>
         <h1>My Drafts</h1>
@@ -338,7 +350,7 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
 export default DraftsPage;
 ```
 
-## useSession WILL NOT WORK AND THE REASON WHY, IS THAT YOU NEED TO PROVIDE ESESSION AND YOU CAN DO THAT BY TAKING IT FROM pageProps INSIDE `_app.tsx`
+## useSession WILL NOT WORK AND THE REASON WHY, IS THAT YOU NEED TO PROVIDEE SESSION AND YOU CAN DO THAT BY TAKING IT FROM pageProps INSIDE `_app.tsx`
 
 MY _app.tsx IS A LITTLE BIT BLOATED WITH ALL OF THE CODE I WROTE EARLIER FOR OTHER PRACTICES AND OTHER PARTS OF PROJECT
 

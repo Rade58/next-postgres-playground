@@ -3,12 +3,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
+import { useEffect, useState } from "react";
 import type { FunctionComponent } from "react";
 import type { GetServerSideProps } from "next";
+import type { Session } from "next-auth";
 
-// WE NEED SESSION ON SERVER SIDE
-// AND ON CLIENT SIDE
-import { getSession, useSession } from "next-auth/client";
+// getSession WORKS CLIENT SIDE AND SERVER SIDE SO I'M GOING TO USE IT
+// ON BOTH PLACES
+// I'M NOT GOING TO USE useSession BECAUSE I HAD SOME PROBLEMS WITH IT
+// IT JUST DIDN'T WORK AS I EXPECTED
+import { getSession /*, useSession */ } from "next-auth/client";
 
 import type { Post } from "@prisma/client";
 
@@ -31,7 +35,6 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 
   // I'M CHECKING IS THERE A name (NOT email)
   // BECAUSE SOMETIMES LIKE FOR GITHUB (email IS NOT PROVIDED)
-  console.log({ session });
   if (!session || !session.user || !session.user.name) {
     res.statusCode = 403;
 
@@ -68,10 +71,18 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
 const DraftsPage: FunctionComponent<PropsI> = (props) => {
   const { drafts } = props;
 
-  //
-  const [session] = useSession();
+  // SINCE I DECIDED NOT TO USE useSession
+  // I'M GOING TO GET SESSION LIKE THIS
+  // -----------------------------
+  const [session, setSession] = useState<Session | null>();
 
-  console.log({ session });
+  useEffect(() => {
+    getSession().then((ses) => {
+      if (ses) setSession(ses);
+    });
+  }, [setSession]);
+
+  // ----------------------------
 
   if (!session) {
     return (
