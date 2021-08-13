@@ -94,3 +94,4 @@ const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
 export default authHandler;
 ```
 
+## NOW IF YOU EVER TRY TO OBTAIN SESSION OBJET, BY USAGE OF `getSession` FUNCTION OR `useSession` HOOK (PACKAGES OF `"@next-auth/clent"`) USER ID IS GOING TO BE ON `session` OBJECT
