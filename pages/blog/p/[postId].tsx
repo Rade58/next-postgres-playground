@@ -3,7 +3,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import type { FunctionComponent } from "react";
 import type { GetServerSideProps } from "next";
 
@@ -59,7 +59,6 @@ export const getServerSideProps: GetServerSideProps<PropsI, queryPramType> =
     };
   };
 
-// LETS BUILD REQUEST HANDLER
 async function publish(id: string) {
   await fetch(`/api/blog/publish/${id}`, {
     method: "PUT",
@@ -67,6 +66,16 @@ async function publish(id: string) {
 
   await Router.push("/blog");
 }
+
+// ------------ ADDING THIS ----------------
+async function deletePost(id: string) {
+  await fetch(`/api/blog/publish/${id}`, {
+    method: "PUT",
+  });
+
+  await Router.push("/blog");
+}
+// -----------------------------------------
 
 const PostPage: FunctionComponent<PropsI> = (props) => {
   const { post } = props;
@@ -107,14 +116,26 @@ const PostPage: FunctionComponent<PropsI> = (props) => {
         <p>By {author?.name || "Unknown author"}</p>
         <ReactMarkdown>{content || ""}</ReactMarkdown>
         {!published && postBelongsToUser && (
-          <button
-            onClick={() => {
-              publish(`${id}`);
-            }}
-            className="border-2 border-gray-800 rounded-lg px-4 py-2"
-          >
-            Publish
-          </button>
+          <Fragment>
+            <button
+              onClick={() => {
+                publish(`${id}`);
+              }}
+              className="border-2 border-gray-800 rounded-lg px-4 py-2"
+            >
+              Publish
+            </button>
+            {/*------------------ ADDING BUTTON ---------------------------------- */}
+            <button
+              onClick={() => {
+                deletePost(`${id}`);
+              }}
+              className="border-2 border-gray-800 rounded-lg px-4 py-2"
+            >
+              Delete
+            </button>
+            {/* --------------------------------------------------------- */}
+          </Fragment>
         )}
       </div>
     </Layout>
