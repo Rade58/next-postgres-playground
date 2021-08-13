@@ -29,7 +29,11 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
     req,
   });
 
-  if (!session || !session.user || !session.user.email) {
+  // I'M CHECKING IS THERE A name (NOT email)
+  // BECAUSE SOMETIMES LIKE FOR GITHUB (email IS NOT PROVIDED)
+  if (!session || !session.user || !session.user.name) {
+    console.log({ session });
+
     res.statusCode = 403;
 
     return {

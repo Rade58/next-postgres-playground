@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { getSession } from "next-auth/client";
 
-import prismaClient from "../../../lib/prisma";
+import prismaClient from "../../../../lib/prisma";
 
 const handler = nc<NextApiRequest, NextApiResponse>();
 
@@ -15,7 +15,7 @@ handler.post(async (req, res) => {
     req,
   });
 
-  if (!session || !session.user || !session.user.email) {
+  if (!session || !session.user || !session.user.name) {
     return res.status(403).send("unauthorized");
   }
 
@@ -25,7 +25,7 @@ handler.post(async (req, res) => {
       content,
       author: {
         connect: {
-          email: session.user.email,
+          email: session.user.email as string | "",
         },
       },
     },

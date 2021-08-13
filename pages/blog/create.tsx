@@ -36,38 +36,39 @@ const CreateBlogPost: FunctionComponent = () => {
   return (
     <Layout>
       <div>
-        <form onScroll={submitData}></form>
-        <h1>New Draft</h1>
-        <input
-          className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
-          type="text"
-          name="Title"
-          placeholder="Title"
-          autoFocus
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
-          name="Content"
-          placeholder="Content"
-          cols={50}
-          rows={8}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <input
-          css={css`
-            background: #ececec;
-            border: 0;
-            padding: 1rem 2rem;
-          `}
-          disabled={!content || !title}
-          type="submit"
-          value="Create"
-        />
-        <a className="ml-4" href="#" onClick={() => Router.push("/")}>
-          or Cancel
-        </a>
+        <form onSubmit={submitData}>
+          <h1>New Draft</h1>
+          <input
+            className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
+            type="text"
+            name="Title"
+            placeholder="Title"
+            autoFocus
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
+            name="Content"
+            placeholder="Content"
+            cols={50}
+            rows={8}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          <input
+            css={css`
+              background: #ececec;
+              border: 0;
+              padding: 1rem 2rem;
+            `}
+            disabled={!content || !title}
+            type="submit"
+            value="Create"
+          />
+          <a className="ml-4" href="#" onClick={() => Router.push("/")}>
+            or Cancel
+          </a>
+        </form>
       </div>
     </Layout>
   );

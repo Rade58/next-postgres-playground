@@ -71,38 +71,39 @@ const CreateBlogPost: FunctionComponent = () => {
   return (
     <Layout>
       <div>
-        <form onScroll={submitData}></form>
-        <h1>New Draft</h1>
-        <input
-          className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
-          type="text"
-          name="Title"
-          placeholder="Title"
-          autoFocus
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
-          name="Content"
-          placeholder="Content"
-          cols={50}
-          rows={8}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <input
-          css={css`
-            background: #ececec;
-            border: 0;
-            padding: 1rem 2rem;
-          `}
-          disabled={!content || !title}
-          type="submit"
-          value="Create"
-        />
-        <a className="ml-4" href="#" onClick={() => Router.push("/")}>
-          or Cancel
-        </a>
+        <form onSubmit={submitData}>
+          <h1>New Draft</h1>
+          <input
+            className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
+            type="text"
+            name="Title"
+            placeholder="Title"
+            autoFocus
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            className="w-full p-2 mx-2 my-0 rounded-md border-3 border-pink-300 border-solid"
+            name="Content"
+            placeholder="Content"
+            cols={50}
+            rows={8}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          <input
+            css={css`
+              background: #ececec;
+              border: 0;
+              padding: 1rem 2rem;
+            `}
+            disabled={!content || !title}
+            type="submit"
+            value="Create"
+          />
+          <a className="ml-4" href="#" onClick={() => Router.push("/")}>
+            or Cancel
+          </a>
+        </form>
       </div>
     </Layout>
   );
@@ -126,7 +127,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { getSession } from "next-auth/client";
 
-import prismaClient from "../../../lib/prisma";
+import prismaClient from "../../../../lib/prisma";
 
 const handler = nc<NextApiRequest, NextApiResponse>();
 
@@ -137,7 +138,7 @@ handler.post(async (req, res) => {
     req,
   });
 
-  if (!session || !session.user || !session.user.email) {
+  if (!session || !session.user || !session.user.name) {
     return res.status(403).send("unauthorized");
   }
 
@@ -147,7 +148,7 @@ handler.post(async (req, res) => {
       content,
       author: {
         connect: {
-          email: session.user.email,
+          email: session.user.email as string | "",
         },
       },
     },
@@ -242,7 +243,11 @@ export const getServerSideProps: GetServerSideProps<PropsI> = async (ctx) => {
     req,
   });
 
-  if (!session || !session.user || !session.user.email) {
+  // I'M CHECKING IS THERE A name (NOT email)
+  // BECAUSE SOMETIMES LIKE FOR GITHUB (email IS NOT PROVIDED)
+  if (!session || !session.user || !session.user.name) {
+    console.log({ session });
+
     res.statusCode = 403;
 
     return {
@@ -395,7 +400,7 @@ export default MyApp;
 
 **NOW WHEN WE USE `useSession` HOOK ACROSS OUR APP, ACROSS ALL OF OUR COMPONENTS, WE CAN OBTAIN SESSION OF SIGNED IN USER**
 
-WE CAN NOW START DEVELOPMENT SERVER AND PLAY AROUND BY CREATING SOME POSTS
+WE CAN NOW START DEVELOPMENT SERVER AND PLAY AROUND BY CREATING SOME POSTS (WE NEED TO BE AUTHENTICATED USER TO DO THAT)
 
 ```
 yarn dev
