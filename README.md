@@ -350,7 +350,7 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
 export default DraftsPage;
 ```
 
-## useSession WILL NOT WORK AND THE REASON WHY, IS THAT YOU NEED TO PROVIDEE SESSION AND YOU CAN DO THAT BY TAKING IT FROM pageProps INSIDE `_app.tsx`
+## SINCE I AVOID USING `useSession`, WE DON NEDE TO WRAP PAGE COMPONENT WITH A SESSION PROVIDER, (NO NEED TO ALTER `_app.tsx` CODE)
 
 MY _app.tsx IS A LITTLE BIT BLOATED WITH ALL OF THE CODE I WROTE EARLIER FOR OTHER PRACTICES AND OTHER PARTS OF PROJECT
 
@@ -361,79 +361,7 @@ code pages/_app.tsx
 ```
 
 ```tsx
-import "../styles/globals.css";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import type { AppProps } from "next/app";
-import type { User } from "@supabase/supabase-js";
 
-import { useRouter } from "next/router";
-
-// WE IMPORTED THIS
-import { Provider } from "next-auth/client";
-//
-
-import { supabase } from "../lib/supabase";
-
-import Header from "../components/Header";
-
-function MyApp({ Component, pageProps }: AppProps) {
-  
-  // IGNORE ALL OF THE CODE, JUST GO TO THE BOTTOM
-  // OF THE FILE
-  const [user, setUser] = useState<null | User>(null);
-  useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (e) =>
-      checkUser()
-    );
-    checkUser();
-    return () => {
-      authListener?.unsubscribe();
-    };
-  }, []);
-  async function checkUser() {
-    const user = supabase.auth.user();
-    setUser(user);
-  }
-  const { pathname } = useRouter();
-  const isBlog = pathname.startsWith("/blog");
-
-  return (
-    <div>
-      {isBlog && <Header />}
-
-      {!isBlog && (
-        <nav className="p-6 border-b border-gray-300">
-          <Link href="/">
-            <a className="mr-6 cursor-pointer">Home</a>
-          </Link>
-
-          {user && (
-            <Link href="/create-post">
-              <a className="mr-6 cursor-pointer">Create Post</a>
-            </Link>
-          )}
-          <Link href="/profile">
-            <a className="mr-6 cursor-pointer">Profile</a>
-          </Link>
-          {/* ADDED THIS */}
-          <Link href="/my-posts">
-            <a className="mr-6 cursor-pointer">My Posts</a>
-          </Link>
-        </nav>
-      )}
-
-      <div className="py-8 px-16">
-        {/* WE ARE WRAPPING EVERYTHING IN PROVIDER
-        AND PASSING SESSION FROM PROPS */}
-        <Provider session={pageProps.session}>
-          <Component {...pageProps} />
-        </Provider>
-      </div>
-    </div>
-  );
-}
-export default MyApp;
 ```
 
 **NOW WHEN WE USE `useSession` HOOK ACROSS OUR APP, ACROSS ALL OF OUR COMPONENTS, WE CAN OBTAIN SESSION OF SIGNED IN USER**
