@@ -16,6 +16,8 @@ import { getSession /*, useSession */ } from "next-auth/client";
 
 import type { Post } from "@prisma/client";
 
+import Link from "next/link";
+
 import prismaClient from "../../lib/prisma";
 
 import Layout from "../../components/Layout";
@@ -99,7 +101,11 @@ const DraftsPage: FunctionComponent<PropsI> = (props) => {
         <h1>My Drafts</h1>
         <main>
           {drafts.map((draft) => (
-            <Draft key={draft.id} post={draft} />
+            <Link key={draft.id} href={`/blog/p/${draft.id}`}>
+              <a>
+                <Draft post={draft} />
+              </a>
+            </Link>
           ))}
         </main>
       </div>

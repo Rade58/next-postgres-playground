@@ -90,7 +90,9 @@ const PostPage: FunctionComponent<PropsI> = (props) => {
   const { title, content, author, published, id } = post;
 
   // @ts-ignore
-  const postBelongsToUser = author?.id === session.user.id;
+  const postBelongsToUser = author?.id === session.id;
+
+  console.log({ postBelongsToUser, author, session });
 
   let tit = title;
 
@@ -109,7 +111,7 @@ const PostPage: FunctionComponent<PropsI> = (props) => {
             onClick={() => {
               publish(`${id}`);
             }}
-            className="border-0 rounded-sm px-4 py-8"
+            className="border-2 border-gray-800 rounded-lg px-4 py-2"
           >
             Publish
           </button>
