@@ -33,3 +33,17 @@ handler.put(async (req, res) => {
 
 export default handler;
 ```
+
+## NOW WE NEED TO DEFINE UI FOR THE SINGLE POST PAGE, AND ACTUAL SENDING REQUEST TO PUBLISH THE POST
+
+OFCOURSE WE ARE GOING TO GET POST THROUGH `getServerSideProps` (**I THINK WE ALREADY DID THAT EARLER, SO WEE NEED TO DEFINE LOGIC FOR SENDING REQUEST TO `/api/blog/publish/:id`**)
+
+```
+code pages/blog/p/[postId].tsx
+```
+
+```tsx
+
+```
+
+

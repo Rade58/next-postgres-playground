@@ -1,18 +1,30 @@
-/* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import { FunctionComponent } from "react";
-// UVESCU, NEKE TYPE-OVE KOJI SE TICU getServerSideProps-A
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx, css } from "@emotion/react";
+
+import { useState, useEffect } from "react";
+import type { FunctionComponent } from "react";
 import type { GetServerSideProps } from "next";
 
+import Router from "next/router";
+
+import type { Session } from "next-auth";
+
 import type { Post } from "@prisma/client";
+import { getSession } from "next-auth/client";
+
+import ReactMarkdown from "react-markdown";
 
 import prismaClient from "../../../lib/prisma";
+import Layout from "../../../components/Layout";
 
 interface PropsI {
   post:
     | (Post & {
         author: {
           name: string | null;
+          id: number | null;
         } | null;
       })
     | null;
@@ -24,20 +36,17 @@ type queryPramType = {
 
 export const getServerSideProps: GetServerSideProps<PropsI, queryPramType> =
   async (ctx) => {
-    // WE WILL TAKE postId FROM params
     const params = ctx.params;
-
-    // WE WILLL QUERY BY postId PARAM
 
     const post = await prismaClient.post.findUnique({
       where: {
-        // THIS IS BECAUSE POSTiD IS string OR undefined
         id: Number(params?.postId) || -1,
       },
       include: {
         author: {
           select: {
             name: true,
+            id: true,
           },
         },
       },
@@ -50,12 +59,64 @@ export const getServerSideProps: GetServerSideProps<PropsI, queryPramType> =
     };
   };
 
+// LETS BUILD REQUEST HANDLER
+async function publish(id: string) {
+  await fetch(`/api/blog/publish/${id}`, {
+    method: "PUT",
+  });
+
+  await Router.push("/blog");
+}
+
 const PostPage: FunctionComponent<PropsI> = (props) => {
   const { post } = props;
 
-  // LETS JUST RENDER JSON
+  const [session, setSession] = useState<Session | null>(null);
 
-  return <div>{JSON.stringify({ post }, null, 2)}</div>;
+  useEffect(() => {
+    getSession().then((ses) => {
+      if (ses) setSession(ses);
+    });
+  }, [setSession]);
+
+  if (!post) {
+    return null;
+  }
+
+  if (!session || !session.user) {
+    return <div>Authenticating ...</div>;
+  }
+
+  const { title, content, author, published, id } = post;
+
+  // @ts-ignore
+  const postBelongsToUser = author?.id === session.user.id;
+
+  let tit = title;
+
+  if (!published) {
+    tit = `${tit} (Draft)`;
+  }
+
+  return (
+    <Layout>
+      <div>
+        <h2>{tit}</h2>
+        <p>By {author?.name || "Unknown author"}</p>
+        <ReactMarkdown>{content || ""}</ReactMarkdown>
+        {!published && postBelongsToUser && (
+          <button
+            onClick={() => {
+              publish(`${id}`);
+            }}
+            className="border-0 rounded-sm px-4 py-8"
+          >
+            Publish
+          </button>
+        )}
+      </div>
+    </Layout>
+  );
 };
 
 export default PostPage;
