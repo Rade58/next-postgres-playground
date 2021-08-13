@@ -38,13 +38,15 @@ OK, I HAVE DEPLOYMENT THAT DIDN'T FAILED STARTING (DODN'T FAILED `next start` BE
 
 **AND I HAVE URL**
 
-<https://supa-prisma.vercel.app>
+IT SHOULD BE LIKE THIS
+
+<https://supa-prisma-rade.vercel.app> (I THINK THERE ARE COUPLE OF URLS BUT YOU CAN WORK WITH THIS)
 
 ## SET NEXT AUTH URL AS EN VARIABLE
 
 SET THET ON VERCEL AS ENV VARIABLE WHERE IT'S NEEDED
 
-YOU NEED `NEXTAUTH_URL` AS `https://supa-prisma.vercel.app/api/auth`
+YOU NEED `NEXTAUTH_URL` AS `https://supa-prisma-rade.vercel.app/api/auth`
 
 
 ## NOW LET'S GO AND GENERATE PRODUCTION OAUTH APP
@@ -53,11 +55,11 @@ YOU NEED `NEXTAUTH_URL` AS `https://supa-prisma.vercel.app/api/auth`
 
 `Settings` --> `Developer Settings` --> `OAuthApps` --> `New OAuth App`
 
-![gh-prod](images/gh-prod.png)
+![gh-prod](images/gh-prod-gh.png)
 
-GENERATE SECRET
+PS. I THINK IT WAS IN VAIN TO SET UP /blog ON UPPER LINK (IT'S JUST NOT IMPORTANT)
 
-![gh-sec-prod](images/ghgsec.png)
+NOW GENERATE SECRET
 
 COPY SECRET AND CLIENT ID
 
@@ -70,3 +72,5 @@ OK NOW, TRY TO REDEPLOY (YOU CAN ADD A COMMEN IN YOUR CODEBASE JUST TO BE SINGNA
 ```
 vc
 ```
+
+**WE CAN NOW TEST **
