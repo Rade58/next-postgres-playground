@@ -84,6 +84,7 @@ const options: NextAuthOptions = {
   pages: {
     signIn: "/blog/signin",
   },
+  // --------------------------------
 };
 
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
@@ -94,9 +95,15 @@ export default authHandler;
 
 JUST TO MENTION TO YOU CAN SET HERE, ERROR PAGE, AND COUPLE MORE PAGES
 
-# LET'S NOW DEFINE UI ON OUR `/blog/signin`
+# LET'S NOW DEFINE UI ON OUR `/blog/signin` PAGE, WHERE WE ARE GOING TO CREATE BUTTONS FOR LOGING IN WITH GITHUB AND GOOGLE
 
+```
+code pages/blog/signin.tsx
+```
 
+```tsx
+
+```
 
 # IN NEXT BRANCH I WILL SHOW YOU HOW TO DEFINE REDIRECT AFTER SIGNING IN
 
