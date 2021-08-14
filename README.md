@@ -90,12 +90,13 @@ const options: NextAuthOptions = {
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
 
 export default authHandler;
-
 ```
 
 JUST TO MENTION TO YOU CAN SET HERE, ERROR PAGE, AND COUPLE MORE PAGES
 
 # LET'S NOW DEFINE UI ON OUR `/blog/signin` PAGE, WHERE WE ARE GOING TO CREATE BUTTONS FOR LOGING IN WITH GITHUB AND GOOGLE
+
+I ALREADY DID SOMETHING SIMILAR IN [PREVIOUS PROJECT](https://github.com/Rade58/production_grade-nextjs/blob/11_LAST_THING/pages/signin.tsx)
 
 ```
 code pages/blog/signin.tsx
