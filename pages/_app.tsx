@@ -52,6 +52,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Link href="/">
             <a className="mr-6 cursor-pointer">Home</a>
           </Link>
+          <Link href="/blog">
+            <a className="mr-6 cursor-pointer">
+              Other Blog (WHERE WE PLAYED WITH NEXT-AUTH)
+            </a>
+          </Link>
 
           {user && (
             <Link href="/create-post">
