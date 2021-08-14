@@ -22,8 +22,6 @@ const options: NextAuthOptions = {
   secret: process.env.SECRET,
 
   callbacks: {
-    // WE DEFINE CALLBACK FOR SESSION
-    // SECOND ARGUMENT IS user
     session: async (session, user) => {
       if (user.id) {
         session.id = user.id;
@@ -31,6 +29,11 @@ const options: NextAuthOptions = {
 
       return session;
     },
+  },
+
+  // HERE WE DEFINED WHAT I MENTIONED
+  pages: {
+    signIn: "/blog/signin",
   },
 };
 

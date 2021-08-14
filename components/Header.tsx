@@ -67,7 +67,7 @@ const Header: FC = () => {
 
   const RightJustSignIn: FC = () => (
     <div className="right">
-      <Link href="/api/auth/signin">
+      <Link href="/blog/signin">
         <a
           data-active={isActive("/blog/signup")}
           className="no-underline text-gray-900 inline-block"
