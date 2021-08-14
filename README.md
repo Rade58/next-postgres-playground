@@ -103,15 +103,59 @@ code pages/blog/signin.tsx
 ```
 
 ```tsx
+/* eslint react/react-in-jsx-scope: 0 */
+/* eslint jsx-a11y/anchor-is-valid: 1 */
+import { useState, useEffect } from "react";
+import type { FunctionComponent } from "react";
 
+import Router from "next/router";
+
+import { signIn, getSession } from "next-auth/client";
+
+const SigninPage: FunctionComponent = () => {
+  useEffect(() => {
+    getSession().then((ses) => {
+      if (ses) {
+        Router.push("/blog/drafts");
+      }
+    });
+  }, []);
+
+  return (
+    <div className="flex flex-wrap justify-between border-0 border-gray-900 w-48 mx-auto mt-11">
+      <button
+        onClick={() => {
+          signIn("github");
+        }}
+        className="border-2 border-gray-500 mt-2 p-2 rounded-md"
+      >
+        Sign In With Github
+      </button>
+      <button
+        onClick={() => {
+          signIn("google");
+        }}
+        className="border-2 border-gray-500 mt-2 p-2 rounded-md"
+      >
+        Sign In With Google
+      </button>
+    </div>
+  );
+};
+
+export default SigninPage;
 ```
 
-# IN NEXT BRANCH I WILL SHOW YOU HOW TO DEFINE REDIRECT AFTER SIGNING IN
+I TRIED IT AND IT WORKS PROPERLY
 
-YOU WILL SET UP CALLBACK FOR NEXT-AUTH, AGAIN (BEFORE WE SETTED CALLBACK WHERE WE DID EXTEND SESSION OBJECT)
+MAYBE BETTER MANAGEMENT OF WHAT IS SHOWN AND WHAT IS NOT SHOWN, WHEN SESSION IS THERE OR NOT (YOU HAVE FLASHING OF CONTENT)
+
+# YOU CAN SET UP REDIRRECT THROUGH NEXT-AUTH
+
+YOU CAN SET UP `redirect` CALLBACK THROUGH NEXT-AUTH
 
 THIS IS DOCUMENTATION:
 
 <https://next-auth.js.org/configuration/callbacks#sign-in-callback>
 
-
+I DON'T KNOW IF I'M GOING TO USE reddirect CALLBACK ANYWHERE IN THE FUTURE, BUT IT SEEMS COOL 

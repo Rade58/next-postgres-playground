@@ -10,17 +10,19 @@ import { signIn, getSession } from "next-auth/client";
 const SigninPage: FunctionComponent = () => {
   useEffect(() => {
     getSession().then((ses) => {
-      if (ses) Router.push("/blog/drafts");
+      if (ses) {
+        Router.push("/blog/drafts");
+      }
     });
   }, []);
 
   return (
-    <div className="border-2 border-gray-900 max-w-md mx-auto mt-11">
+    <div className="flex flex-wrap justify-between border-0 border-gray-900 w-48 mx-auto mt-11">
       <button
         onClick={() => {
           signIn("github");
         }}
-        className="border-2 border-gray-500"
+        className="border-2 border-gray-500 mt-2 p-2 rounded-md"
       >
         Sign In With Github
       </button>
@@ -28,7 +30,7 @@ const SigninPage: FunctionComponent = () => {
         onClick={() => {
           signIn("google");
         }}
-        className="border-2 border-gray-500"
+        className="border-2 border-gray-500 mt-2 p-2 rounded-md"
       >
         Sign In With Google
       </button>
