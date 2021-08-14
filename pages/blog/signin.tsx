@@ -16,8 +16,22 @@ const SigninPage: FunctionComponent = () => {
 
   return (
     <div className="border-2 border-gray-900 max-w-md mx-auto mt-11">
-      <button className="border-2 border-gray-500">Sign In With Github</button>
-      <button className="border-2 border-gray-500">Sign In With Google</button>
+      <button
+        onClick={() => {
+          signIn("github");
+        }}
+        className="border-2 border-gray-500"
+      >
+        Sign In With Github
+      </button>
+      <button
+        onClick={() => {
+          signIn("google");
+        }}
+        className="border-2 border-gray-500"
+      >
+        Sign In With Google
+      </button>
     </div>
   );
 };
