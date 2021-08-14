@@ -98,3 +98,9 @@ vc
 ```
 
 I TRIED TO SIGN IN WITH GOOGLE AND IT SEEMS TO WORK
+
+# IN NEST BRANCH I WILL SHOW YOU HOW TO DEFINE REDIRECT AFTER SIGNING IN
+
+YOU WILL ET UP CALLBACK AGAIN
+
+<https://next-auth.js.org/configuration/callbacks#sign-in-callback>
