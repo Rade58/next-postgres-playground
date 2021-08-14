@@ -96,7 +96,7 @@ JUST TO MENTION TO YOU CAN SET HERE, ERROR PAGE, AND COUPLE MORE PAGES
 
 # LET'S NOW DEFINE UI ON OUR `/blog/signin` PAGE, WHERE WE ARE GOING TO CREATE BUTTONS FOR LOGING IN WITH GITHUB AND GOOGLE
 
-I ALREADY DID SOMETHING SIMILAR IN [PREVIOUS PROJECT](https://github.com/Rade58/production_grade-nextjs/blob/11_LAST_THING/pages/signin.tsx)
+I ALREADY DID SOMETHING SIMILAR IN [OTHER PROJECT](https://github.com/Rade58/production_grade-nextjs/blob/11_LAST_THING/pages/signin.tsx) (WHEN I WAS LEARNING PRODUCTION GRADE NWXT.JS)
 
 ```
 code pages/blog/signin.tsx
@@ -113,4 +113,5 @@ YOU WILL SET UP CALLBACK FOR NEXT-AUTH, AGAIN (BEFORE WE SETTED CALLBACK WHERE W
 THIS IS DOCUMENTATION:
 
 <https://next-auth.js.org/configuration/callbacks#sign-in-callback>
+
 
