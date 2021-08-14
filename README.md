@@ -14,6 +14,8 @@ EVERY BRANCH IS DEDICATED TO SOME TOPIC, AND THERE IS README FOR EVERY TOPIC
 
 - SUPABASE
 
+- Prisma
+
 - NextAuth.js
 ...
 
@@ -27,6 +29,6 @@ EVERY BRANCH IS DEDICATED TO SOME TOPIC, AND THERE IS README FOR EVERY TOPIC
 
 <https://postgrescheatsheet.com/#/tables>
 
-# USEFUL SUPABASE TUTORIAL I'M GOING TO FOLLOW
+# USEFUL SUPABASE TUTORIAL
 
 <https://www.freecodecamp.org/news/the-complete-guide-to-full-stack-development-with-supabas/>
